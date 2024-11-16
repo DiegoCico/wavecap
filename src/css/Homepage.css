@@ -1,0 +1,95 @@
+.homepage {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.home-sidenav {
+    grid-area: 1 / 1 / 6 / 3;
+    background-color: #000000;
+    height: 100vh;
+}
+
+.logo-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo-image {
+    width: 200px;
+    height: auto;
+    margin: 2rem;
+}
+
+.search-cont {
+    display: flex;
+    justify-content: center; /* Centers the input */
+    align-items: center;
+    margin: 1rem 0.6rem;
+
+}
+
+.search-box {
+    width: 300px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: #323232; /* Dark background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px; /* Adjust font size */
+    text-align: center; /* Center text inside the input */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    outline: none; /* Remove outline on focus */
+}
+
+.search-box::placeholder {
+    color: #ccc; /* Placeholder text color */
+    font-size: 16px; /* Adjust font size of placeholder */
+}
+
+.search-box:focus {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5); /* Enhance shadow on focus */
+}
+
+.custom-line {
+    height: 1px; /* Set height */
+    /* background: linear-gradient(to right, transparent, #4d4d4d, transparent); Gradient effect */
+    background-color: #656565;
+    margin: 2rem 0.6rem; /* Spacing around the line */
+}
+
+/* Portfolio Section */
+.portfolio-cont {
+    background-color: #232323; /* Matches the dark gray in the image */
+    border-radius: 15px; /* Rounded corners */
+    margin: 1rem 0.6rem; /* Center horizontally and add spacing */
+    /* padding: 10px; */
+    color: white;
+}
+
+.portfolio-header {
+    background-color: #323232; /* Slightly darker header background */
+    border-radius: 10px 10px 0 0; /* Round top corners */
+    padding: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.portfolio-body {
+    text-align: center; /* Center-align text */
+    padding: 20px;
+    font-size: 14px;
+    color: #232323; /* Light gray for the body text */
+}
+
+
+.home-main {
+    grid-area: 1 / 3 / 6 / 10;
+    background-color: #2B2B2B;
+    height: 100vh;
+}

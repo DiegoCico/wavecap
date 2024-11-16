@@ -1,0 +1,85 @@
+/* Container Styles */
+.stock-graph-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /* Title Styles */
+  .stock-graph-title {
+    color: green;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Graph Wrapper */
+  .stock-graph-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Graph Image */
+  .stock-graph-image {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid green;
+  }
+  
+  /* Button Container */
+  .stock-graph-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Individual Button Styles */
+  .stock-graph-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .stock-graph-button.active {
+    background-color: red;
+  }
+  
+  .stock-graph-button:hover {
+    background-color: #ff4c4c;
+  }
+  
+  /* Fetch Graph Button */
+  .fetch-graph-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fetch-graph-button:hover {
+    background-color: #ff4c4c;
+  }
+  
