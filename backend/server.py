@@ -1,15 +1,24 @@
-from flask import Flask, jsonify, request
-import requests
+from flask import jsonify, request
+# from flask_cors import CORS
+import firebase_admin
+from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
 import os
+from config import app
 
+# Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
+# Initialize Firebase Admin SDK using credentials from .env
+firebase_cred_path = os.getenv("FIREBASE_SERVICE_ACCOUNT")
+if not firebase_cred_path:
+    raise ValueError("FIREBASE_SERVICE_ACCOUNT environment variable not set.")
 
-# Access environment variables
-PINATA_API_KEY = os.getenv('PINATA_API_KEY')
-PINATA_API_SECRET = os.getenv('PINATA_API_SECRET')
+cred = credentials.Certificate(firebase_cred_path)
+firebase_admin.initialize_app(cred)
+
+# Initialize Firestore
+db = firestore.client()
 
 @app.route("/server-test", methods=['POST'])
 def server_test():
@@ -21,35 +30,38 @@ def signup():
     email = data.get('email')
     password = data.get('password')
 
-    # Validate input
     if not email or not password:
         return jsonify({'message': 'Email and password are required.'}), 400
 
-    # Create IPFS account metadata on Pinata
-    metadata = {
-        "name": email,
-        "keyvalues": {
-            "email": email,
-        }
-    }
-    
-    files = {
-        'pinataMetadata': (None, str(metadata)),
-        'pinataContent': (None, password)  # Store password for simplicity; encrypt in production
-    }
+    try:
+        user = auth.create_user(email=email, password=password)
 
-    headers = {
-        "pinata_api_key": PINATA_API_KEY,
-        "pinata_secret_api_key": PINATA_API_SECRET
-    }
+        # Add user details to Firestore
+        db.collection("users").document(user.uid).set({
+            "email": email,
+            "uid": user.uid,
+        })
+
+        return jsonify({'message': 'Account created successfully!', 'uid': user.uid}), 201
+    except Exception as e:
+        return jsonify({'message': 'Failed to create account.', 'error': str(e)}), 500
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
+
+    if not email or not password:
+        return jsonify({"message": "Email and password are required."}), 400
 
     try:
-        pinata_response = requests.post("https://api.pinata.cloud/pinning/pinJSONToIPFS", headers=headers, files=files)
-        pinata_response.raise_for_status()
-        response_data = pinata_response.json()
-        return jsonify({'message': 'Account created successfully!', 'ipfs_hash': response_data['IpfsHash']}), 201
-    except requests.exceptions.RequestException as e:
-        return jsonify({'message': 'Failed to create account on Pinata.', 'error': str(e)}), 500
+        user = auth.get_user_by_email(email)
+        return jsonify({"message": "Login successful!", "uid": user.uid}), 200
+    except firebase_admin.auth.UserNotFoundError:
+        return jsonify({"message": "User not found."}), 404
+    except Exception as e:
+        return jsonify({"message": "Login failed.", "error": str(e)}), 500
 
 
 if __name__ == "__main__":
