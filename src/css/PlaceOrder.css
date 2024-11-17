@@ -1,0 +1,90 @@
+.place-order {
+    background-color: #232323; /* Match the dashboard style */
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 1rem; /* Add spacing above the component */
+}
+
+.place-order h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #fff;
+}
+
+.place-order label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.place-order input,
+.place-order select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #323232; /* Match the dark theme */
+    color: white;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.place-order input:focus,
+.place-order select:focus {
+    border-color: #4caf50; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.8); /* Add green glow */
+}
+
+.place-order button {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50; /* Green button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.place-order button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.place-order button:active {
+    background-color: #3e8e41; /* Even darker green on click */
+}
+
+.place-order p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ff5252; /* Error or success messages in red */
+    text-align: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .place-order {
+        padding: 0.8rem;
+    }
+
+    .place-order h3 {
+        font-size: 1.2rem;
+    }
+
+    .place-order input,
+    .place-order select {
+        font-size: 0.9rem;
+    }
+
+    .place-order button {
+        font-size: 0.9rem;
+    }
+}

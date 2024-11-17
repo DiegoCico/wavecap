@@ -95,11 +95,22 @@ html, body {
 }
 
 .portfolio-body p {
-    margin: 0;
-    color: #A1A1A1;
-    font-size: 1rem;
-    text-align: center;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    max-height: 200px; /* Limit height to avoid overflow */
+    -ms-overflow-style: auto; /* Default scrollbar for IE/Edge */
+    scrollbar-width: auto; /* Default scrollbar for Firefox */
 }
+
+.portfolio-body::-webkit-scrollbar {
+    display: block; /* Show scrollbar in Chrome/Safari */
+    width: 8px; /* Optional: Adjust scrollbar width */
+}
+
+.portfolio-body::-webkit-scrollbar-thumb {
+    background-color: #656565; /* Style the scrollbar thumb */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
 
 /* Header styling for portfolio and movers */
 .portfolio-header,
@@ -387,4 +398,24 @@ html, body {
     font-size: 1rem;
     color: #333;
     font-weight: bold;
+}
+
+.no-stocks-message {
+    font-size: 1rem;
+    color: #A1A1A1; /* Muted gray color */
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Initial state (hidden) */
+.portfolio-slide {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out; /* Smooth sliding effect */
+}
+
+/* Expanded state (visible) */
+.portfolio-slide.active {
+    max-height: 500px; /* Adjust based on the content height */
+    overflow-y: auto; /* Enable scrolling if content exceeds the max height */
 }

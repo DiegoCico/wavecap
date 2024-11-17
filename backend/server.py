@@ -16,9 +16,8 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 ALPACA_BASE_URL = 'https://paper-api.alpaca.markets/v2'
 # alpaca = tradeapi.REST(os.getenv('ALPACA_API_KEY'), os.getenv('ALPACA_SECRET_KEY'), ALPACA_BASE_URL)
 
+NEWS_API_KEY = os.getenv("NEWS_API")
 analyzer = SentimentIntensityAnalyzer()
-
-
 # Load environment variables
 load_dotenv()
 
@@ -441,13 +440,13 @@ def remove_stock():
 @app.route("/get-portfolio", methods=["GET"])
 def get_portfolio():
     """
-    Fetch the list of all stock symbols in the user's portfolio.
+    Fetch the list of all stock symbols and names in the user's portfolio.
     """
     try:
         uid = request.args.get("uid")  # Extract UID from query parameters
 
         if not uid:
-            return jsonify({"error": "UID is required"}), 400
+            return jsonify({"error": "UID is required to fetch portfolio"}), 400
 
         # Reference the user's portfolio collection
         portfolio_ref = db.collection("users").document(uid).collection("portfolio")
@@ -455,16 +454,28 @@ def get_portfolio():
         # Fetch all documents in the portfolio collection
         portfolio_docs = portfolio_ref.stream()
 
-        # Extract symbols from each document
-        portfolio_symbols = [doc.to_dict().get("symbol") for doc in portfolio_docs]
+        # Extract and filter out placeholder documents
+        portfolio_items = [
+            {"symbol": doc_data.get("symbol"), "name": doc_data.get("name")}
+            for doc in portfolio_docs
+            if (doc_data := doc.to_dict()).get("symbol") and not doc_data.get("placeholder")
+        ]
 
-        if not portfolio_symbols:
-            return jsonify({"message": "No stocks found in portfolio", "portfolio": []}), 200
+        if not portfolio_items:
+            return jsonify({
+                "message": "No stocks found in portfolio",
+                "portfolio": []
+            }), 200
 
-        return jsonify({"portfolio": portfolio_symbols}), 200
+        return jsonify({
+            "portfolio": portfolio_items
+        }), 200
 
     except Exception as e:
-        return jsonify({"error": f"Failed to fetch portfolio: {str(e)}"}), 500
+        return jsonify({
+            "error": f"Failed to fetch portfolio: {str(e)}"
+        }), 500
+
 
 
 
@@ -589,6 +600,89 @@ def new_simulation():
         return jsonify({'error': f'Error creating simulation: {str(e)}'}), 500
 
 
+@app.route('/place-order', methods=['OPTIONS', 'POST'])
+def place_order():
+    if request.method == 'OPTIONS':
+        # Handle preflight CORS request
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response, 200
+
+    try:
+        data = request.json
+        ticker = data.get('ticker')
+        dollar_amount = float(data.get('dollarAmount'))
+        order_type = data.get('orderType', 'market')  # Default to market order
+        time_in_force = data.get('timeInForce', 'gtc')  # Default to 'Good Till Cancelled'
+        side = data.get('side', 'buy')  # Default to 'buy'
+
+        if not ticker or not dollar_amount or not side:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        # Alpaca API headers
+        headers = {
+            'APCA-API-KEY-ID': os.getenv('ALPACA_API_KEY'),
+            'APCA-API-SECRET-KEY': os.getenv('ALPACA_SECRET_KEY')
+        }
+
+        # Step 1: Fetch the latest quote price
+        market_data_response = requests.get(
+            f'{ALPACA_BASE_URL}/v2/stocks/{ticker}/quotes/latest',
+            headers=headers
+        )
+
+        if market_data_response.status_code == 200:
+            # Market is open, use the latest quote price
+            market_data = market_data_response.json()
+            last_price = float(market_data['ask_price'] or market_data['bid_price'])  # Use ask or bid price
+        else:
+            # Step 2: Fetch the last trade price as a fallback
+            trade_data_response = requests.get(
+                f'{ALPACA_BASE_URL}/v2/stocks/{ticker}/trades/latest',
+                headers=headers
+            )
+            if trade_data_response.status_code == 200:
+                # Market is closed, use the last trade price
+                trade_data = trade_data_response.json()
+                last_price = float(trade_data['price'])
+            else:
+                # Failed to fetch both quote and trade data
+                return jsonify({'error': 'Failed to fetch market or trade data. The market might be closed.'}), 400
+
+        # Step 3: Calculate the number of shares
+        number_of_shares = round(dollar_amount / last_price, 2)
+
+        # Step 4: Place the order
+        order_data = {
+            'symbol': ticker,
+            'qty': number_of_shares,
+            'side': side,
+            'type': order_type,
+            'time_in_force': time_in_force
+        }
+
+        order_response = requests.post(
+            f'{ALPACA_BASE_URL}/v2/orders',
+            headers=headers,
+            json=order_data
+        )
+
+        if order_response.status_code == 200:
+            # Order successfully placed
+            order_result = order_response.json()
+            return jsonify({'message': 'Order placed successfully', 'order': order_result}), 200
+        else:
+            # Failed to place the order
+            return jsonify({'error': 'Failed to place order'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Error placing order: {str(e)}'}), 500
+
+
+
 
 
 @app.route("/news-sentiment/<company_name>", methods=["GET"])
@@ -597,7 +691,6 @@ def get_news_sentiment(company_name):
     Fetch recent news articles about a company and perform sentiment analysis.
     """
     try:
-        NEWS_API_KEY = os.getenv("NEWS_API")
         if not NEWS_API_KEY:
             return jsonify({"error": "News API key not configured."}), 500
 

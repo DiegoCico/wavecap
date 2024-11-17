@@ -1,6 +1,7 @@
 import React from "react";
 import TradingViewChart from "../components/TradingViewChart";
 import "../css/PaperTrading.css";
+import PlaceOrder from "../components/PlaceOrder";
 
 export default function PaperTrading({ sim, setShowSims, setShowSim }) {
     const handleBack = () => {
@@ -43,6 +44,9 @@ export default function PaperTrading({ sim, setShowSims, setShowSim }) {
                             </tr>
                         </tbody>
                     </table>
+                    <div className="order-section">
+                        <PlaceOrder ticker={sim.startingTicker} />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import StockGraph from "../components/StockGraph";
-import Stock from './Stock';
+import Stock from "./Stock";
 import Dashboard from "./Dashboard";
 import "../css/Homepage.css";
 
@@ -14,12 +14,10 @@ const Homepage = () => {
     const [showDash, setShowDash] = useState(true);
     const [topGainer, setTopGainer] = useState(null);
     const { uid } = useParams();
-    const navigate = useNavigate();
     const inputRef = useRef(null);
 
     useEffect(() => {
         fetchPortfolio();
-        // fetchTopGainer(); // Uncomment this line if the fetchTopGainer function is needed
     }, []);
 
     const fetchPortfolio = async () => {
@@ -84,9 +82,16 @@ const Homepage = () => {
         inputRef.current?.focus(); // Refocus input
     };
 
+    const handlePortfolioItemClick = (symbol) => {
+        setStockSymbol(symbol); // Set the selected stock symbol
+        setShowGraph(true); // Show the graph view
+        setShowDash(false); // Hide the dashboard
+    };
+
     const handleOpenDash = () => {
         setShowDash(true);
         setShowGraph(false);
+        setStockSymbol(""); // Clear any selected stock
     };
 
     return (
@@ -129,16 +134,23 @@ const Homepage = () => {
                 <div className="portfolio-cont">
                     <div className="portfolio-header">
                         <p className="portfolio-title">Portfolio</p>
-                        <p onClick={handleOpenDash} className="portfolio-dashboard-btn">
+                        <p
+                            onClick={handleOpenDash}
+                            className="portfolio-dashboard-btn"
+                        >
                             Dashboard
                         </p>
                     </div>
                     <div className="portfolio-body">
                         {userPortfolio.length === 0 ? (
-                            <p>Nothing here....yet</p>
+                            <p className="no-stocks-message">No stocks saved yet</p>
                         ) : (
                             userPortfolio.map((stock, index) => (
-                                <div key={index} className="portfolio-item">
+                                <div
+                                    key={index}
+                                    className="portfolio-item"
+                                    onClick={() => handlePortfolioItemClick(stock.symbol)} // Switch to stock view
+                                >
                                     <img
                                         className="portfolio-stock-image"
                                         src={`${process.env.PUBLIC_URL}/ticker_icons/${stock.symbol}.png`}
@@ -172,7 +184,7 @@ const Homepage = () => {
                     </div>
                 </div>
                 <div className="signout-cont">
-                    <button onClick={() => navigate("/")}>
+                    <button onClick={handleOpenDash}>
                         <i className="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </div>
@@ -182,7 +194,7 @@ const Homepage = () => {
                     <Stock stockSymbol={stockSymbol} />
                 ) : showDash ? (
                     <div className="dashboard-container">
-                        <Dashboard uid={uid}/>
+                        <Dashboard uid={uid} />
                     </div>
                 ) : (
                     <h1 className="home-title">Search for a stock to view its details</h1>

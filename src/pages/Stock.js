@@ -13,6 +13,42 @@ const Stock = ({ stockSymbol }) => {
 
     const imagePath = `${process.env.PUBLIC_URL}/ticker_icons/${stockSymbol}.png`;
 
+    // Check if the stock is saved whenever the stockSymbol changes
+    useEffect(() => {
+        const checkIfSaved = async () => {
+            if (!uid) return;
+
+            try {
+                const response = await fetch(
+                    `http://127.0.0.1:5000/is-saved`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            uid,
+                            symbol: stockSymbol,
+                        }),
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`Error checking saved status: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                setIsSaved(data.isSaved); // Backend should return { isSaved: true/false }
+            } catch (err) {
+                console.error("Error fetching saved status:", err);
+                setIsSaved(false); // Assume not saved if an error occurs
+            }
+        };
+
+        checkIfSaved();
+    }, [stockSymbol, uid]);
+
+    // Fetch stock details
     useEffect(() => {
         const fetchStockDetails = async () => {
             setIsLoading(true);
@@ -51,7 +87,7 @@ const Stock = ({ stockSymbol }) => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    uid, // Pass the UID to the backend
+                    uid,
                     symbol: stockSymbol,
                     name: stockDetails?.stockName || "Unknown Stock",
                 }),
