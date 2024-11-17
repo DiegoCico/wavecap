@@ -32,8 +32,9 @@ const AuthPage = () => {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to process the request.");
       }
-
+      
       const data = await response.json();
+      console.log(data.sessionUid)
       setMessage(isLogin ? "Login successful!" : "Signup successful!");
 
       // Redirect to homepage with user ID

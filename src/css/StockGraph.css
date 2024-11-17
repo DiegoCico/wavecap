@@ -1,6 +1,4 @@
-
-  
-  /* Main container with black background */
+/* Main container with black background */
 .stock-graph-container {
   display: flex;
   flex-direction: column;
@@ -19,11 +17,19 @@
   margin-bottom: 20px;
 }
 
-/* Row for interval buttons */
-.stock-graph-row {
+/* Combined row for interval buttons and chart type toggle */
+.stock-graph-interval-type-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+/* Interval buttons */
+.stock-graph-interval-buttons {
+  display: flex;
+  gap: 10px;
 }
 
 .stock-graph-button {
@@ -37,60 +43,72 @@
   font-size: 14px;
 }
 
-.stock-graph-button.active {
+.stock-graph-button.selected {
   background-color: green;
   color: white;
 }
 
+/* Graph display */
 .stock-graph-wrapper {
   width: 100%;
 }
 
 .stock-graph-container {
-    position: relative;
-    color: white;
+  position: relative;
+  color: white;
+}
+
+.stock-graph-header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Interval buttons and chart type toggle container */
+.stock-graph-type-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Container for the icons */
+.stock-graph-type-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Rotation Animation */
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
   }
-  
-  .stock-graph-header h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  50% {
+    transform: rotate(180deg);
+    opacity: 1;
   }
-  
-  .stock-graph-interval-buttons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
+  100% {
+    transform: rotate(360deg);
+    opacity: 0;
   }
-  
-  .stock-graph-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-  }
-  
-  .stock-graph-button:hover {
-    color: lightgray;
-  }
-  
-  .stock-graph-button.selected {
-    color: #00ff00; /* Highlight selected button */
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .stock-graph-wrapper {
-    margin-top: 50px;
-  }
-  
-  .stock-graph-type-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-  }
-  
+}
+
+/* Style for icons */
+.stock-graph-type-buttons i {
+  color: white;
+  font-size: 24px;
+  opacity: 0; /* Hide both icons initially */
+  transition: opacity 0.3s ease-in-out;
+  animation: none; /* Initially no animation */
+}
+
+/* Show the selected icon with rotation effect */
+.stock-graph-type-switch i.selected {
+  opacity: 1;
+  animation: rotateIcon 0.6s ease-in-out; /* Rotate the icon when selected */
+}
+
+.stock-graph-button:hover {
+  background-color: #444;
+  color: lightgray;
+}

@@ -63,16 +63,17 @@ def login():
     try:
         user = auth.get_user_by_email(email)
         session["uid"] = user.uid
-        print('session uid', session.get("uid"))
-        return jsonify({"message": "Login successful!", "uid": user.uid}), 200
+        print("Login successful, session UID:", session.get("uid"))
+        return jsonify({"message": "Login successful!", "uid": user.uid, 'session uid':session["uid"]}), 200
     except firebase_admin.auth.UserNotFoundError:
         return jsonify({"message": "User not found."}), 404
     except Exception as e:
         return jsonify({"message": "Login failed.", "error": str(e)}), 500
-
+        
 @app.route('/logout', methods=['OPTIONS', 'POST'])
 def logout():
-    if request.method == 'OPTIONS':  # Handle preflight request
+    # Handle preflight OPTIONS request
+    if request.method == 'OPTIONS':
         response = make_response()
         response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
         response.headers["Access-Control-Allow-Credentials"] = "true"
@@ -80,31 +81,44 @@ def logout():
         response.headers["Access-Control-Allow-Headers"] = "Content-Type"
         return response, 200
 
-    # Handle the actual POST request
-    if 'uid' in session:
-        session.clear()
-        response = jsonify({"message": "User logged out successfully"})
-        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
-        response.headers["Access-Control-Allow-Credentials"] = "true"
-        return response, 200
+    # Handle POST logout request
+    data = request.get_json()
+    uid = data.get("uid")
+
+    if uid:
+        try:
+            # Clear session or revoke tokens
+            session.clear()
+            auth.revoke_refresh_tokens(uid)
+            response = jsonify({"message": "User logged out successfully"})
+            response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+            return response, 200
+        except Exception as e:
+            response = jsonify({"error": f"Failed to log out: {str(e)}"})
+            response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+            return response, 500
     else:
         response = jsonify({"error": "No user logged in"})
         response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
         response.headers["Access-Control-Allow-Credentials"] = "true"
         return response, 400
 
+
 @app.route("/stock-graph/<stock_symbol>/<interval>", methods=["GET"])
 def stock_graph(stock_symbol, interval):
     """
-    Fetch stock data for a given symbol and interval using yfinance, and send it as JSON to React.
+    Fetch stock data for a given symbol and interval using yfinance, 
+    and send it as JSON to React with OHLC data for candlestick chart.
     """
     try:
         # Map intervals to yfinance's valid periods and intervals
         interval_map = {
             "minutes": ("7d", "5m"),  # Last 7 days, 5-minute interval
-            "days": ("1mo", "1d"),    # Last month, 1-day interval
-            "months": ("1y", "1wk"),  # Last year, 1-week interval
-            "years": ("5y", "1mo")    # Last 5 years, 1-month interval
+            "days": ("1mo", "1d"),     # Last month, 1-day interval
+            "months": ("1y", "1wk"),   # Last year, 1-week interval
+            "years": ("5y", "1mo")     # Last 5 years, 1-month interval
         }
 
         if interval not in interval_map:
@@ -129,7 +143,18 @@ def stock_graph(stock_symbol, interval):
         labels = hist.index.strftime('%Y-%m-%d').tolist()  # Convert dates to strings
         data = hist['Close'].tolist()  # Closing prices
 
-        return jsonify({"labels": labels, "data": data}), 200
+        # Prepare OHLC data for candlestick chart (date, open, high, low, close)
+        candle_data = []
+        for index, row in hist.iterrows():
+            candle_data.append({
+                "x": row.name.strftime('%Y-%m-%d'),  # Date as x-axis value
+                "o": row['Open'],  # Open price
+                "h": row['High'],  # High price
+                "l": row['Low'],   # Low price
+                "c": row['Close'], # Close price
+            })
+
+        return jsonify({"labels": labels, "data": data, "candleData": candle_data}), 200
 
     except Exception as e:
         return jsonify({

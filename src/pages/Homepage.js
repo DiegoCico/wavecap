@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import '../css/Homepage.css';
 
 const Homepage = () => {
     const [userPortfolio, setUserPortfolio] = useState([])
+    const { uid } = useParams()
+    const navigate = useNavigate()
 
     const today = new Date();
     const formattedDate = `${String(
@@ -17,10 +20,12 @@ const Homepage = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify({ uid }),
             })
             const data = await response.json()
             if (response.ok) {
                 console.log(data.message)
+                navigate('/')
             } else {
                 console.log(data.error)
             }
