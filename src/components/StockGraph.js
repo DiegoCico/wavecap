@@ -34,6 +34,39 @@ function StockGraph({ stockSymbol }) {
   // Create a ref to store the chart instance and clean up
   const chartRef = useRef(null);
   const [stockName, setStockName] = useState("");
+  const [sentimentData, setSentimentData] = useState(null);
+const [showSentiment, setShowSentiment] = useState(false);
+
+const fetchSentimentData = async () => {
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/news-sentiment/${stockSymbol}`);
+    if (!response.ok) throw new Error("Failed to fetch sentiment data");
+    const data = await response.json();
+
+    const sentimentChartData = {
+      labels: data.labels,
+      datasets: [
+        {
+          label: "Sentiment Score",
+          data: data.scores,
+          borderColor: "rgba(255, 165, 0, 1)",
+          backgroundColor: "rgba(255, 165, 0, 0.2)",
+          tension: 0.1,
+          fill: true,
+        },
+      ],
+    };
+    setSentimentData(sentimentChartData);
+  } catch (err) {
+    console.error("Error fetching sentiment data:", err);
+  }
+};
+
+const toggleSentiment = () => {
+  setShowSentiment(!showSentiment);
+  if (!sentimentData) fetchSentimentData();
+};
+
 
   useEffect(() => {
     const fetchStockName = async () => {
@@ -222,15 +255,12 @@ function StockGraph({ stockSymbol }) {
     },
   };
   
-  
-  
-
   return (
     <div className="stock-graph-container">
       {/* Header */}
       <header className="stock-graph-header">
-      <h1>{`${stockName} (${stockSymbol})`}</h1>
-      {error && <p>{error}</p>}
+        <h1>{`${stockName} (${stockSymbol})`}</h1>
+        {error && <p>{error}</p>}
         <div className="stock-graph-interval-type-buttons">
           {/* Interval Buttons */}
           <div className="stock-graph-interval-buttons">
@@ -259,7 +289,7 @@ function StockGraph({ stockSymbol }) {
               1Y
             </button>
           </div>
-
+  
           {/* Chart Type Buttons */}
           <div className="stock-graph-type-buttons">
             <div
@@ -276,12 +306,22 @@ function StockGraph({ stockSymbol }) {
               )}
             </div>
           </div>
+  
+          {/* Sentiment Toggle Button */}
+          <div className="sentiment-toggle-container">
+            <button onClick={toggleSentiment} className="toggle-sentiment">
+              <i className="fa-solid fa-eye"></i>{" "}
+              {showSentiment ? "Show Prices" : "Show Sentiment"}
+            </button>
+          </div>
         </div>
       </header>
-
+  
       {/* Graph */}
       <div className="stock-graph-wrapper">
-        {chartData ? (
+        {showSentiment && sentimentData ? (
+          <Line ref={chartRef} data={sentimentData} options={options} />
+        ) : chartData ? (
           chartType === "line" ? (
             <Line ref={chartRef} data={chartData} options={options} />
           ) : (
@@ -293,6 +333,7 @@ function StockGraph({ stockSymbol }) {
       </div>
     </div>
   );
+  
 }
 
 export default StockGraph;

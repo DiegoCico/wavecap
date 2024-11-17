@@ -22,7 +22,7 @@ export default function PaperTrading({ sim, setShowSims, setShowSim }) {
             <div className="paper-trading-main">
                 {/* TradingView Chart */}
                 <div className="chart-container">
-                    <TradingViewChart ticker="AAPL" /> {/* Example ticker */}
+                    <TradingViewChart ticker={sim.startingTicker} /> {/* Example ticker */}
                 </div>
 
                 {/* Account Details */}

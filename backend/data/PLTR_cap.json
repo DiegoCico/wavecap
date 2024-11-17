@@ -1,0 +1,3902 @@
+[
+    {
+        "symbol": "PLTR",
+        "date": "2023-11-03",
+        "marketCap": 40258821360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-11-02",
+        "marketCap": 38298095280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-11-01",
+        "marketCap": 31797862080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-31",
+        "marketCap": 31542115200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-30",
+        "marketCap": 31307680560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-27",
+        "marketCap": 32117545680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-26",
+        "marketCap": 32586414960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-25",
+        "marketCap": 33225782160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-24",
+        "marketCap": 35463567360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-23",
+        "marketCap": 34525828800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-20",
+        "marketCap": 34334018640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-19",
+        "marketCap": 36358681440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-18",
+        "marketCap": 36657052800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-17",
+        "marketCap": 38021036160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-16",
+        "marketCap": 36998048640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-13",
+        "marketCap": 36998048640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-12",
+        "marketCap": 38234158560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-11",
+        "marketCap": 38191534080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-10",
+        "marketCap": 37935787200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-09",
+        "marketCap": 37530854640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-06",
+        "marketCap": 35399630640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-05",
+        "marketCap": 33694651440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-04",
+        "marketCap": 33524153520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-03",
+        "marketCap": 31755237600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-10-02",
+        "marketCap": 33843837120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-29",
+        "marketCap": 34099584000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-28",
+        "marketCap": 33609402480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-27",
+        "marketCap": 31648676400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-26",
+        "marketCap": 29751887040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-25",
+        "marketCap": 30306005280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-22",
+        "marketCap": 30114195120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-21",
+        "marketCap": 29837136000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-20",
+        "marketCap": 31414241760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-19",
+        "marketCap": 32288043600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-18",
+        "marketCap": 32948723040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-15",
+        "marketCap": 32671663920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-14",
+        "marketCap": 33737275920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-13",
+        "marketCap": 33247094400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-12",
+        "marketCap": 33225782160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-11",
+        "marketCap": 33652026960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-08",
+        "marketCap": 32245419120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-07",
+        "marketCap": 32415917040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-06",
+        "marketCap": 32607727200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-05",
+        "marketCap": 32415917040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-09-01",
+        "marketCap": 32351980320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-31",
+        "marketCap": 31925735520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-30",
+        "marketCap": 34802887920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-29",
+        "marketCap": 32820849600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-28",
+        "marketCap": 31201119360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-25",
+        "marketCap": 30966684720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-24",
+        "marketCap": 30135507360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-23",
+        "marketCap": 32607727200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-22",
+        "marketCap": 31265056080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-21",
+        "marketCap": 30902748000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-18",
+        "marketCap": 30689625600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-17",
+        "marketCap": 30156819600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-16",
+        "marketCap": 32927410800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-15",
+        "marketCap": 32756912880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-14",
+        "marketCap": 33502841280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-11",
+        "marketCap": 32842161840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-10",
+        "marketCap": 32842161840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-09",
+        "marketCap": 32501166000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-08",
+        "marketCap": 36316056960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-07",
+        "marketCap": 38340719760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-04",
+        "marketCap": 38788276800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-03",
+        "marketCap": 39875201040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-02",
+        "marketCap": 40429319280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-08-01",
+        "marketCap": 42603167760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-31",
+        "marketCap": 42283484160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-28",
+        "marketCap": 37957099440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-27",
+        "marketCap": 34419267600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-26",
+        "marketCap": 35016010320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-25",
+        "marketCap": 35271757200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-24",
+        "marketCap": 34781575680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-21",
+        "marketCap": 35016010320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-20",
+        "marketCap": 36507867120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-19",
+        "marketCap": 38468593200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-18",
+        "marketCap": 38532529920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-17",
+        "marketCap": 37083297600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-14",
+        "marketCap": 34952073600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-13",
+        "marketCap": 35676689760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-12",
+        "marketCap": 35357006160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-11",
+        "marketCap": 35143883760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-10",
+        "marketCap": 34738951200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-07",
+        "marketCap": 32692976160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-06",
+        "marketCap": 32245419120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-05",
+        "marketCap": 33460216800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-07-03",
+        "marketCap": 33076596480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-30",
+        "marketCap": 32671663920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-29",
+        "marketCap": 32394604800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-28",
+        "marketCap": 32565102720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-27",
+        "marketCap": 31137182640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-26",
+        "marketCap": 29709262560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-23",
+        "marketCap": 29901072720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-22",
+        "marketCap": 29943697200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-21",
+        "marketCap": 31201119360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-20",
+        "marketCap": 33652026960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-16",
+        "marketCap": 34738951200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-15",
+        "marketCap": 35378318400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-14",
+        "marketCap": 33907773840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-13",
+        "marketCap": 34099584000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-12",
+        "marketCap": 33353655600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-09",
+        "marketCap": 32010984480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-08",
+        "marketCap": 32373292560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-07",
+        "marketCap": 31307680560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-06",
+        "marketCap": 32948723040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-05",
+        "marketCap": 32479853760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-02",
+        "marketCap": 30945372480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-06-01",
+        "marketCap": 30987996960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-31",
+        "marketCap": 31350305040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-30",
+        "marketCap": 31350305040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-26",
+        "marketCap": 29091207600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-25",
+        "marketCap": 27364916160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-24",
+        "marketCap": 26064869520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-23",
+        "marketCap": 26938671360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-22",
+        "marketCap": 25233692160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-19",
+        "marketCap": 24956633040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-18",
+        "marketCap": 25020569760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-17",
+        "marketCap": 21845046000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-16",
+        "marketCap": 20182691280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-15",
+        "marketCap": 20289252480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-12",
+        "marketCap": 20246628000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-11",
+        "marketCap": 21056493120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-10",
+        "marketCap": 21184366560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-09",
+        "marketCap": 20353189200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-08",
+        "marketCap": 16495673760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-05",
+        "marketCap": 15792369840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-04",
+        "marketCap": 15728433120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-03",
+        "marketCap": 16112053440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-02",
+        "marketCap": 16175990160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-05-01",
+        "marketCap": 16580922720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-28",
+        "marketCap": 16516986000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-27",
+        "marketCap": 16666171680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-26",
+        "marketCap": 16495673760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-25",
+        "marketCap": 16495673760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-24",
+        "marketCap": 17262914400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-21",
+        "marketCap": 17433412320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-20",
+        "marketCap": 17369475600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-19",
+        "marketCap": 18094091760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-18",
+        "marketCap": 18605585520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-17",
+        "marketCap": 18754771200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-14",
+        "marketCap": 18776083440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-13",
+        "marketCap": 18285901920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-12",
+        "marketCap": 17753095920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-11",
+        "marketCap": 18349838640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-10",
+        "marketCap": 17880969360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-06",
+        "marketCap": 17241602160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-05",
+        "marketCap": 17007167520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-04",
+        "marketCap": 17795720400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-04-03",
+        "marketCap": 17859657120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-31",
+        "marketCap": 18008842800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-30",
+        "marketCap": 17178407000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-29",
+        "marketCap": 17325951600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-28",
+        "marketCap": 16862240000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-27",
+        "marketCap": 16946551199
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-24",
+        "marketCap": 17283796000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-23",
+        "marketCap": 17557807400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-22",
+        "marketCap": 17304873800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-21",
+        "marketCap": 17810741000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-20",
+        "marketCap": 17030862400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-17",
+        "marketCap": 16609306400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-16",
+        "marketCap": 16820084400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-15",
+        "marketCap": 16651462000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-14",
+        "marketCap": 16630384200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-13",
+        "marketCap": 16588228600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-10",
+        "marketCap": 15492183000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-09",
+        "marketCap": 16208828200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-08",
+        "marketCap": 17136251400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-07",
+        "marketCap": 17452418400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-06",
+        "marketCap": 17452418400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-03",
+        "marketCap": 17557807400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-02",
+        "marketCap": 16799006600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-03-01",
+        "marketCap": 16208828200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-28",
+        "marketCap": 16524995200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-27",
+        "marketCap": 16925473399
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-24",
+        "marketCap": 17051940200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-23",
+        "marketCap": 17220562600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-22",
+        "marketCap": 17621040800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-21",
+        "marketCap": 17852896600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-17",
+        "marketCap": 19391576000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-16",
+        "marketCap": 20466543800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-15",
+        "marketCap": 21309655800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-14",
+        "marketCap": 19433731600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-13",
+        "marketCap": 16040205800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-10",
+        "marketCap": 15829427800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-09",
+        "marketCap": 16756851000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-08",
+        "marketCap": 17325951600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-07",
+        "marketCap": 17557807400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-06",
+        "marketCap": 17515651800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-03",
+        "marketCap": 17726429800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-02",
+        "marketCap": 18948942200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-02-01",
+        "marketCap": 17283796000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-31",
+        "marketCap": 16398528400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-30",
+        "marketCap": 15534338600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-27",
+        "marketCap": 15913739000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-26",
+        "marketCap": 15260327200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-25",
+        "marketCap": 15218171600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-24",
+        "marketCap": 14796615600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-23",
+        "marketCap": 15555416400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-20",
+        "marketCap": 14796615600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-19",
+        "marketCap": 14185359400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-18",
+        "marketCap": 14543682000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-17",
+        "marketCap": 14902004600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-13",
+        "marketCap": 14670148800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-12",
+        "marketCap": 14775537800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-11",
+        "marketCap": 14712304400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-10",
+        "marketCap": 14122126000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-09",
+        "marketCap": 13700570000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-06",
+        "marketCap": 13489792000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-05",
+        "marketCap": 13321169600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-04",
+        "marketCap": 13869192400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2023-01-03",
+        "marketCap": 13468714200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-30",
+        "marketCap": 13420329480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-29",
+        "marketCap": 13378521600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-28",
+        "marketCap": 12688691580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-27",
+        "marketCap": 12542364000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-23",
+        "marketCap": 13148578260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-22",
+        "marketCap": 13211290080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-21",
+        "marketCap": 13587561000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-20",
+        "marketCap": 13190386140
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-19",
+        "marketCap": 13274001900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-16",
+        "marketCap": 14423718600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-15",
+        "marketCap": 14653661940
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-14",
+        "marketCap": 15364395900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-13",
+        "marketCap": 15677955000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-12",
+        "marketCap": 15238972260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-09",
+        "marketCap": 14862701340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-08",
+        "marketCap": 14883605280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-07",
+        "marketCap": 14779085580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-06",
+        "marketCap": 14611854060
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-05",
+        "marketCap": 15029932860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-02",
+        "marketCap": 16012418040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-12-01",
+        "marketCap": 16430496840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-30",
+        "marketCap": 15677955000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-29",
+        "marketCap": 14799989520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-28",
+        "marketCap": 14967221040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-25",
+        "marketCap": 15218068320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-23",
+        "marketCap": 15406203780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-22",
+        "marketCap": 15092644680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-21",
+        "marketCap": 15029932860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-18",
+        "marketCap": 15448011660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-17",
+        "marketCap": 15928802280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-16",
+        "marketCap": 16848575640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-15",
+        "marketCap": 17433885960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-14",
+        "marketCap": 16932191400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-11",
+        "marketCap": 17580213540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-10",
+        "marketCap": 15970610160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-09",
+        "marketCap": 14590950120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-08",
+        "marketCap": 15071740740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-07",
+        "marketCap": 14674565880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-04",
+        "marketCap": 16576824420
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-03",
+        "marketCap": 16890383520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-02",
+        "marketCap": 17183038680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-11-01",
+        "marketCap": 18081908100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-31",
+        "marketCap": 18374563260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-28",
+        "marketCap": 18061004160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-27",
+        "marketCap": 17977388400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-26",
+        "marketCap": 17914676580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-25",
+        "marketCap": 18102812040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-24",
+        "marketCap": 17287558380
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-21",
+        "marketCap": 17329366260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-20",
+        "marketCap": 16806767759
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-19",
+        "marketCap": 16535016540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-18",
+        "marketCap": 17057615040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-17",
+        "marketCap": 16597728360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-14",
+        "marketCap": 15740666820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-13",
+        "marketCap": 16890383520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-12",
+        "marketCap": 16869479580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-11",
+        "marketCap": 16806767759
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-10",
+        "marketCap": 16848575640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-07",
+        "marketCap": 17036711100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-06",
+        "marketCap": 17705637180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-05",
+        "marketCap": 17601117480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-04",
+        "marketCap": 17684733240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-10-03",
+        "marketCap": 17224846560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-30",
+        "marketCap": 16994903220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-29",
+        "marketCap": 16751981200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-28",
+        "marketCap": 16461724100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-27",
+        "marketCap": 15819011950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-26",
+        "marketCap": 15611685450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-23",
+        "marketCap": 15342161000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-22",
+        "marketCap": 15279963050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-21",
+        "marketCap": 15943407850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-20",
+        "marketCap": 15798279300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-19",
+        "marketCap": 16295862900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-16",
+        "marketCap": 16130001700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-15",
+        "marketCap": 16606852650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-14",
+        "marketCap": 15819011950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-13",
+        "marketCap": 15508022200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-12",
+        "marketCap": 16606852650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-09",
+        "marketCap": 16150734350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-08",
+        "marketCap": 15611685450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-07",
+        "marketCap": 15321428350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-06",
+        "marketCap": 15093369200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-02",
+        "marketCap": 15342161000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-09-01",
+        "marketCap": 15528754850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-31",
+        "marketCap": 16005605800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-30",
+        "marketCap": 16150734350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-29",
+        "marketCap": 16192199650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-26",
+        "marketCap": 16461724100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-25",
+        "marketCap": 17456891300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-24",
+        "marketCap": 16793446500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-23",
+        "marketCap": 16606852650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-22",
+        "marketCap": 16731248550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-19",
+        "marketCap": 17643485150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-18",
+        "marketCap": 18970374750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-17",
+        "marketCap": 19550888950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-16",
+        "marketCap": 20193601100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-15",
+        "marketCap": 20546056150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-12",
+        "marketCap": 20546056150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-11",
+        "marketCap": 19530156300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-10",
+        "marketCap": 19882611350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-09",
+        "marketCap": 19177701250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-08",
+        "marketCap": 20359462300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-05",
+        "marketCap": 23738884250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-04",
+        "marketCap": 23469359800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-03",
+        "marketCap": 23220568000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-02",
+        "marketCap": 22640053800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-08-01",
+        "marketCap": 21707084550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-29",
+        "marketCap": 21458292750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-28",
+        "marketCap": 21002174450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-27",
+        "marketCap": 20774115300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-26",
+        "marketCap": 19488691000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-25",
+        "marketCap": 20069205200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-22",
+        "marketCap": 20400927600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-21",
+        "marketCap": 21748549850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-20",
+        "marketCap": 20960709150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-19",
+        "marketCap": 19364295100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-18",
+        "marketCap": 18721582950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-15",
+        "marketCap": 18742315600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-14",
+        "marketCap": 18452058500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-13",
+        "marketCap": 19239899200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-12",
+        "marketCap": 19675284850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-11",
+        "marketCap": 19820413400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-08",
+        "marketCap": 21085105050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-07",
+        "marketCap": 21105837700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-06",
+        "marketCap": 20317997000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-05",
+        "marketCap": 20877778550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-07-01",
+        "marketCap": 19219166550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-30",
+        "marketCap": 18804513550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-29",
+        "marketCap": 18965794770
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-28",
+        "marketCap": 19130178690
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-27",
+        "marketCap": 19767166380
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-24",
+        "marketCap": 20938401810
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-23",
+        "marketCap": 19438398540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-22",
+        "marketCap": 18513738990
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-21",
+        "marketCap": 17897299290
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-17",
+        "marketCap": 16931543760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-16",
+        "marketCap": 15760308330
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-15",
+        "marketCap": 16684967879
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-14",
+        "marketCap": 16068528180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-13",
+        "marketCap": 15698664360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-10",
+        "marketCap": 16972639740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-09",
+        "marketCap": 17835655320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-08",
+        "marketCap": 18863054820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-07",
+        "marketCap": 18760314870
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-06",
+        "marketCap": 18452095020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-03",
+        "marketCap": 18369903060
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-02",
+        "marketCap": 19109630700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-06-01",
+        "marketCap": 17383599540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-31",
+        "marketCap": 17835655320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-27",
+        "marketCap": 18184971150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-26",
+        "marketCap": 17178119639
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-25",
+        "marketCap": 16356200040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-24",
+        "marketCap": 15513732450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-23",
+        "marketCap": 16458939990
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-20",
+        "marketCap": 16602775920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-19",
+        "marketCap": 17075379690
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-18",
+        "marketCap": 16458939990
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-17",
+        "marketCap": 17178119639
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-16",
+        "marketCap": 16520583959
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-13",
+        "marketCap": 17137023660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-12",
+        "marketCap": 15082224660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-11",
+        "marketCap": 13787701290
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-10",
+        "marketCap": 14979484710
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-09",
+        "marketCap": 15328800540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-06",
+        "marketCap": 19479494520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-05",
+        "marketCap": 20794565880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-04",
+        "marketCap": 22561693020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-03",
+        "marketCap": 21678129450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-05-02",
+        "marketCap": 22068541260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-29",
+        "marketCap": 21369909600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-28",
+        "marketCap": 22500049050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-27",
+        "marketCap": 21698677440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-26",
+        "marketCap": 22849364880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-25",
+        "marketCap": 24883615890
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-22",
+        "marketCap": 24575396040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-21",
+        "marketCap": 25335671670
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-20",
+        "marketCap": 26280879210
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-19",
+        "marketCap": 26527455090
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-18",
+        "marketCap": 24965807850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-14",
+        "marketCap": 25520603580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-13",
+        "marketCap": 26506907100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-12",
+        "marketCap": 25602795540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-11",
+        "marketCap": 26013755340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-08",
+        "marketCap": 26095947300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-07",
+        "marketCap": 26383619160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-06",
+        "marketCap": 26712387000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-05",
+        "marketCap": 28541158110
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-04",
+        "marketCap": 30061709370
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-04-01",
+        "marketCap": 28417870170
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-31",
+        "marketCap": 28212390270
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-30",
+        "marketCap": 28263941160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-29",
+        "marketCap": 28915559400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-28",
+        "marketCap": 27327239940
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-25",
+        "marketCap": 26410901790
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-24",
+        "marketCap": 27266150730
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-23",
+        "marketCap": 26838526260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-22",
+        "marketCap": 27021793890
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-21",
+        "marketCap": 25637105130
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-18",
+        "marketCap": 26105455740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-17",
+        "marketCap": 25087302240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-16",
+        "marketCap": 24008059530
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-15",
+        "marketCap": 21931026390
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-14",
+        "marketCap": 21381223500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-11",
+        "marketCap": 23193536730
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-10",
+        "marketCap": 24170964090
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-09",
+        "marketCap": 23722976550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-08",
+        "marketCap": 22480829280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-07",
+        "marketCap": 22623370770
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-04",
+        "marketCap": 22317924720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-03",
+        "marketCap": 23091721380
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-02",
+        "marketCap": 24557862420
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-03-01",
+        "marketCap": 24802219260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-28",
+        "marketCap": 24130237950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-25",
+        "marketCap": 23356441290
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-24",
+        "marketCap": 24089511810
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-23",
+        "marketCap": 21238682010
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-22",
+        "marketCap": 21340497360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-18",
+        "marketCap": 22440103140
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-17",
+        "marketCap": 23967333390
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-16",
+        "marketCap": 28447208790
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-15",
+        "marketCap": 28854470190
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-14",
+        "marketCap": 27001430820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-11",
+        "marketCap": 26736710910
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-10",
+        "marketCap": 27612322920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-09",
+        "marketCap": 28243578090
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-08",
+        "marketCap": 26777437050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-07",
+        "marketCap": 26431264860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-04",
+        "marketCap": 26349812580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-03",
+        "marketCap": 25352022150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-02",
+        "marketCap": 27123609240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-02-01",
+        "marketCap": 28915559400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-31",
+        "marketCap": 27917768970
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-28",
+        "marketCap": 25881461970
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-27",
+        "marketCap": 25005849960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-26",
+        "marketCap": 25962914250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-25",
+        "marketCap": 26594169420
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-24",
+        "marketCap": 27286513800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-21",
+        "marketCap": 27551233710
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-20",
+        "marketCap": 29770808340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-19",
+        "marketCap": 29648629920
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-18",
+        "marketCap": 30483515790
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-14",
+        "marketCap": 32601275070
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-13",
+        "marketCap": 32601275070
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-12",
+        "marketCap": 34047053039
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-11",
+        "marketCap": 34393225230
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-10",
+        "marketCap": 33599065500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-07",
+        "marketCap": 33721243919
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-06",
+        "marketCap": 34087779179
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-05",
+        "marketCap": 34535766720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-04",
+        "marketCap": 36999698190
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2022-01-03",
+        "marketCap": 37732768710
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-31",
+        "marketCap": 37081150470
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-30",
+        "marketCap": 37618017150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-29",
+        "marketCap": 36571394950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-28",
+        "marketCap": 37376488950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-27",
+        "marketCap": 38121200900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-23",
+        "marketCap": 38101073550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-22",
+        "marketCap": 38000436800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-21",
+        "marketCap": 38040691500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-20",
+        "marketCap": 36148720600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-17",
+        "marketCap": 38362729100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-16",
+        "marketCap": 36913559900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-15",
+        "marketCap": 37960182100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-14",
+        "marketCap": 37517380400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-13",
+        "marketCap": 37034324000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-10",
+        "marketCap": 38121200900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-09",
+        "marketCap": 38664639350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-08",
+        "marketCap": 39892407700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-07",
+        "marketCap": 39167823100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-06",
+        "marketCap": 37839418000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-03",
+        "marketCap": 38201710300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-02",
+        "marketCap": 39630752150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-12-01",
+        "marketCap": 39006804300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-30",
+        "marketCap": 41562977750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-29",
+        "marketCap": 42408326450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-26",
+        "marketCap": 42327817050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-24",
+        "marketCap": 42488835850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-23",
+        "marketCap": 41442213650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-22",
+        "marketCap": 41562977750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-19",
+        "marketCap": 43092656350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-18",
+        "marketCap": 43273802500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-17",
+        "marketCap": 45266410150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-16",
+        "marketCap": 46554560550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-15",
+        "marketCap": 47118126350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-12",
+        "marketCap": 45950740050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-11",
+        "marketCap": 46272777650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-10",
+        "marketCap": 45326792200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-09",
+        "marketCap": 48808823750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-08",
+        "marketCap": 53840661250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-05",
+        "marketCap": 52331110000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-04",
+        "marketCap": 53277095450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-03",
+        "marketCap": 52572638200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-02",
+        "marketCap": 52170091200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-11-01",
+        "marketCap": 53458241600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-29",
+        "marketCap": 52089581800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-28",
+        "marketCap": 51606525400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-27",
+        "marketCap": 50439139100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-26",
+        "marketCap": 51364997200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-25",
+        "marketCap": 51143596350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-22",
+        "marketCap": 49171116050
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-21",
+        "marketCap": 49875573300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-20",
+        "marketCap": 48748441700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-19",
+        "marketCap": 49694427150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-18",
+        "marketCap": 48828951100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-15",
+        "marketCap": 48305640000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-14",
+        "marketCap": 49010097250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-13",
+        "marketCap": 48567295550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-12",
+        "marketCap": 47681692150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-11",
+        "marketCap": 47359654550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-08",
+        "marketCap": 47299272500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-07",
+        "marketCap": 47762201550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-06",
+        "marketCap": 47460291300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-05",
+        "marketCap": 46715579350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-04",
+        "marketCap": 46635069950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-10-01",
+        "marketCap": 48969842550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-30",
+        "marketCap": 48386149400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-29",
+        "marketCap": 48166965400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-28",
+        "marketCap": 49777769300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-27",
+        "marketCap": 53961930650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-24",
+        "marketCap": 56103121200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-23",
+        "marketCap": 56515644150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-22",
+        "marketCap": 53883354850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-21",
+        "marketCap": 52292194900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-20",
+        "marketCap": 52154687250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-17",
+        "marketCap": 56397780450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-16",
+        "marketCap": 56240628850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-15",
+        "marketCap": 53195816600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-14",
+        "marketCap": 51585012700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-13",
+        "marketCap": 50740322850
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-10",
+        "marketCap": 51624300600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-09",
+        "marketCap": 51329641350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-08",
+        "marketCap": 50249224100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-07",
+        "marketCap": 52449346500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-03",
+        "marketCap": 52331482800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-02",
+        "marketCap": 52076111450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-09-01",
+        "marketCap": 51467149000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-31",
+        "marketCap": 51742164300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-30",
+        "marketCap": 50602815200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-27",
+        "marketCap": 50504595450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-26",
+        "marketCap": 48854503650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-25",
+        "marketCap": 47833018250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-24",
+        "marketCap": 49306314500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-23",
+        "marketCap": 48756283900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-20",
+        "marketCap": 47165123950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-19",
+        "marketCap": 47459783200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-18",
+        "marketCap": 49659905600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-17",
+        "marketCap": 47086548150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-16",
+        "marketCap": 48127677500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-13",
+        "marketCap": 48913435500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-12",
+        "marketCap": 48893791550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-11",
+        "marketCap": 43904228250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-10",
+        "marketCap": 45023933400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-09",
+        "marketCap": 45043577350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-06",
+        "marketCap": 42863098900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-05",
+        "marketCap": 44238175400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-04",
+        "marketCap": 43806008500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-03",
+        "marketCap": 43688144800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-08-02",
+        "marketCap": 43413129500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-30",
+        "marketCap": 42647015450
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-29",
+        "marketCap": 43570281100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-28",
+        "marketCap": 44316751200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-27",
+        "marketCap": 42588083600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-26",
+        "marketCap": 43472061350
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-23",
+        "marketCap": 42843454950
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-22",
+        "marketCap": 43354197650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-21",
+        "marketCap": 44238175400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-20",
+        "marketCap": 43570281100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-19",
+        "marketCap": 42313068300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-16",
+        "marketCap": 41979121150
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-15",
+        "marketCap": 42175560650
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-14",
+        "marketCap": 42352356200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-13",
+        "marketCap": 44100667750
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-12",
+        "marketCap": 45082865250
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-09",
+        "marketCap": 45750759550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-08",
+        "marketCap": 45338236600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-07",
+        "marketCap": 44965001550
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-06",
+        "marketCap": 48481268600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-02",
+        "marketCap": 48009813800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-07-01",
+        "marketCap": 48559844400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-30",
+        "marketCap": 51781452200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-29",
+        "marketCap": 50453357780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-28",
+        "marketCap": 51874312280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-25",
+        "marketCap": 50737548680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-24",
+        "marketCap": 50263897180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-23",
+        "marketCap": 49771299620
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-22",
+        "marketCap": 48122992400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-21",
+        "marketCap": 48160884520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-18",
+        "marketCap": 48066154220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-17",
+        "marketCap": 48217722700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-16",
+        "marketCap": 46986228800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-15",
+        "marketCap": 46247332460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-14",
+        "marketCap": 47365150000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-11",
+        "marketCap": 46739930020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-10",
+        "marketCap": 45735788840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-09",
+        "marketCap": 45792627020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-08",
+        "marketCap": 46190494280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-07",
+        "marketCap": 46342062760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-04",
+        "marketCap": 45527382180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-03",
+        "marketCap": 44769539780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-02",
+        "marketCap": 46323116700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-06-01",
+        "marketCap": 43689614360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-28",
+        "marketCap": 43481207700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-27",
+        "marketCap": 43007556200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-26",
+        "marketCap": 41908684720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-25",
+        "marketCap": 40696136880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-24",
+        "marketCap": 40203539320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-21",
+        "marketCap": 39313074500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-20",
+        "marketCap": 39047829660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-19",
+        "marketCap": 39161506020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-18",
+        "marketCap": 40241431440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-17",
+        "marketCap": 38763638760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-14",
+        "marketCap": 38043688480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-13",
+        "marketCap": 34803912220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-12",
+        "marketCap": 35789107340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-11",
+        "marketCap": 38289987260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-10",
+        "marketCap": 34993372820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-07",
+        "marketCap": 37418468500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-06",
+        "marketCap": 38062634540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-05",
+        "marketCap": 40070916900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-04",
+        "marketCap": 40999273840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-05-03",
+        "marketCap": 42249713800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-30",
+        "marketCap": 43651722240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-29",
+        "marketCap": 44276942220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-28",
+        "marketCap": 45186353100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-27",
+        "marketCap": 45243191280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-26",
+        "marketCap": 45678950660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-23",
+        "marketCap": 44352726460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-22",
+        "marketCap": 43310693160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-21",
+        "marketCap": 42874933780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-20",
+        "marketCap": 41264518680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-19",
+        "marketCap": 41567655640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-16",
+        "marketCap": 42571796820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-15",
+        "marketCap": 43860128900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-14",
+        "marketCap": 44902162200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-13",
+        "marketCap": 48160884520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-12",
+        "marketCap": 44220104040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-09",
+        "marketCap": 45546328240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-08",
+        "marketCap": 44352726460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-07",
+        "marketCap": 43386477400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-06",
+        "marketCap": 44087481620
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-05",
+        "marketCap": 44409564640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-04-01",
+        "marketCap": 43708560420
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-31",
+        "marketCap": 44125373740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-30",
+        "marketCap": 40138322320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-29",
+        "marketCap": 39573763340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-26",
+        "marketCap": 41121747640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-25",
+        "marketCap": 41121747640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-24",
+        "marketCap": 39846937040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-23",
+        "marketCap": 42360135080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-22",
+        "marketCap": 44108446760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-19",
+        "marketCap": 44290562560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-18",
+        "marketCap": 43671368840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-17",
+        "marketCap": 45911393180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-16",
+        "marketCap": 46639856380
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-15",
+        "marketCap": 48788822820
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-12",
+        "marketCap": 49025573360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-11",
+        "marketCap": 48679553340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-10",
+        "marketCap": 45073660500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-09",
+        "marketCap": 44181293080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-08",
+        "marketCap": 41012478160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-05",
+        "marketCap": 43616734100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-04",
+        "marketCap": 45037237340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-03",
+        "marketCap": 42961117220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-02",
+        "marketCap": 44581947840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-03-01",
+        "marketCap": 45182929980
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-26",
+        "marketCap": 43525676200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-25",
+        "marketCap": 43634945680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-24",
+        "marketCap": 48060359620
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-23",
+        "marketCap": 48715976500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-22",
+        "marketCap": 50992424000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-19",
+        "marketCap": 52813582000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-18",
+        "marketCap": 45838546860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-17",
+        "marketCap": 49316958640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-16",
+        "marketCap": 50701038720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-12",
+        "marketCap": 58113151780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-11",
+        "marketCap": 60298541380
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-10",
+        "marketCap": 65015340600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-09",
+        "marketCap": 69513600860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-08",
+        "marketCap": 65652745899
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-05",
+        "marketCap": 62010429899
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-04",
+        "marketCap": 58368113899
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-03",
+        "marketCap": 57839978080
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-02",
+        "marketCap": 56492321160
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-02-01",
+        "marketCap": 61846525680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-29",
+        "marketCap": 64068338440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-28",
+        "marketCap": 64942494279
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-27",
+        "marketCap": 71025162000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-26",
+        "marketCap": 64414358459
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-25",
+        "marketCap": 65980554339
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-22",
+        "marketCap": 59333327640
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-21",
+        "marketCap": 47313684840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-20",
+        "marketCap": 47969301720
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-19",
+        "marketCap": 48479225960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-15",
+        "marketCap": 46694491120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-14",
+        "marketCap": 45383257360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-13",
+        "marketCap": 46439529000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-12",
+        "marketCap": 47677916440
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-11",
+        "marketCap": 47222626940
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-08",
+        "marketCap": 45893181600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-07",
+        "marketCap": 45528950000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-06",
+        "marketCap": 42870059320
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-05",
+        "marketCap": 44800486800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2021-01-04",
+        "marketCap": 42560462460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-31",
+        "marketCap": 42888270900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-30",
+        "marketCap": 24540822200
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-29",
+        "marketCap": 24110624520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-28",
+        "marketCap": 25059014860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-24",
+        "marketCap": 27131785500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-23",
+        "marketCap": 28050844180
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-22",
+        "marketCap": 27415324880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-21",
+        "marketCap": 27874854220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-18",
+        "marketCap": 25391440340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-17",
+        "marketCap": 26623370060
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-16",
+        "marketCap": 25342554240
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-15",
+        "marketCap": 25841192460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-14",
+        "marketCap": 26633147280
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-11",
+        "marketCap": 26594038400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-10",
+        "marketCap": 26437602880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-09",
+        "marketCap": 26036736860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-08",
+        "marketCap": 27953071980
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-07",
+        "marketCap": 28295274680
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-04",
+        "marketCap": 23318669700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-03",
+        "marketCap": 23494659660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-02",
+        "marketCap": 22008522220
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-12-01",
+        "marketCap": 25098123740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-30",
+        "marketCap": 26506043420
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-27",
+        "marketCap": 27043790520
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-25",
+        "marketCap": 28402824100
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-24",
+        "marketCap": 23289338040
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-23",
+        "marketCap": 20571270880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-20",
+        "marketCap": 17745654300
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-19",
+        "marketCap": 18557163560
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-18",
+        "marketCap": 17501223800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-17",
+        "marketCap": 17452337700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-16",
+        "marketCap": 15575111460
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-13",
+        "marketCap": 15448007600
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-12",
+        "marketCap": 14255186760
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-11",
+        "marketCap": 15604443120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-10",
+        "marketCap": 13688108000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-09",
+        "marketCap": 14343181740
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-06",
+        "marketCap": 13521895260
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-05",
+        "marketCap": 11615337360
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-04",
+        "marketCap": 10481179840
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-03",
+        "marketCap": 10266081000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-11-02",
+        "marketCap": 10305189880
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-30",
+        "marketCap": 9904323860
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-29",
+        "marketCap": 10510511500
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-28",
+        "marketCap": 10608283700
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-27",
+        "marketCap": 10706055900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-26",
+        "marketCap": 9728333900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-23",
+        "marketCap": 9278581780
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-22",
+        "marketCap": 9464348960
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-21",
+        "marketCap": 8995042400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-20",
+        "marketCap": 9063482940
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-19",
+        "marketCap": 9356799540
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-16",
+        "marketCap": 9493680620
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-15",
+        "marketCap": 9689225020
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-14",
+        "marketCap": 9131923480
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-13",
+        "marketCap": 9259027340
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-12",
+        "marketCap": 9669670580
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-09",
+        "marketCap": 9728333900
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-08",
+        "marketCap": 9777220000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-07",
+        "marketCap": 9777220000
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-06",
+        "marketCap": 9679447800
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-05",
+        "marketCap": 8828829660
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-02",
+        "marketCap": 8995042400
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-10-01",
+        "marketCap": 9249250120
+    },
+    {
+        "symbol": "PLTR",
+        "date": "2020-09-30",
+        "marketCap": 9288359000
+    }
+]

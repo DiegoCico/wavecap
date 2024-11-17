@@ -9,8 +9,8 @@ import yfinance as yf
 import json
 from yahoo_fin import stock_info as si
 from sambanova_client import sambanova_client
-
-
+from datetime import datetime
+from news import getSentiment
 
 # Load environment variables
 load_dotenv()
@@ -269,31 +269,35 @@ def get_stock_details(stock_symbol):
     try:
         stock = yf.Ticker(stock_symbol)
 
-        # Fetch stock info
-        stock_info = stock.info
-        if not stock_info:
-            return jsonify({"error": "No data found for this stock symbol"}), 404
+        # Fetching historical data for additional metrics
+        hist = stock.history(period="1d")  # Get today's data
+        if hist.empty:
+            return jsonify({"error": "No historical data available for this stock"}), 404
 
-        # Additional stock metrics
+        # Fetch key metrics from summary_detail
+        summary_detail = stock.get_info()
+        
         stock_details = {
-            "stockName": stock_info.get("shortName", "Unknown Stock"),
-            "currentPrice": stock_info.get("currentPrice", "N/A"),
-            "marketCap": stock_info.get("marketCap", "N/A"),
-            "sector": stock_info.get("sector", "N/A"),
-            "industry": stock_info.get("industry", "N/A"),
-            "volume": stock_info.get("volume", "N/A"),
-            "highToday": stock_info.get("dayHigh", "N/A"),
-            "lowToday": stock_info.get("dayLow", "N/A"),
-            "dividendYield": stock_info.get("dividendYield", "N/A"),
-            "yearHigh": stock_info.get("fiftyTwoWeekHigh", "N/A"),
-            "yearLow": stock_info.get("fiftyTwoWeekLow", "N/A"),
-            "eps": stock_info.get("trailingEps", "N/A")
+            "stockName": summary_detail.get("shortName", "Unknown Stock"),
+            "currentPrice": hist["Close"][-1] if not hist.empty else "N/A",  # Use the latest close price
+            "marketCap": summary_detail.get("marketCap", "N/A"),
+            "sector": summary_detail.get("sector", "N/A"),
+            "industry": summary_detail.get("industry", "N/A"),
+            "volume": hist["Volume"][-1] if not hist.empty else "N/A",
+            "highToday": hist["High"][-1] if not hist.empty else "N/A",
+            "lowToday": hist["Low"][-1] if not hist.empty else "N/A",
+            "dividendYield": summary_detail.get("dividendYield", "N/A"),
+            "yearHigh": summary_detail.get("fiftyTwoWeekHigh", "N/A"),
+            "yearLow": summary_detail.get("fiftyTwoWeekLow", "N/A"),
+            "eps": summary_detail.get("trailingEps", "N/A"),
         }
 
         return jsonify(stock_details), 200
 
     except Exception as e:
         return jsonify({"error": "Failed to fetch stock details", "message": str(e)}), 500
+
+
 
 
 @app.route("/news/<company_name>", methods=["GET"])
@@ -422,17 +426,70 @@ def save_stock():
     except Exception as e:
         return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
 
+from datetime import datetime
+
 @app.route("/create-new-simulation", methods=['OPTIONS', 'POST'])
 def new_simulation():
+    if request.method == 'OPTIONS':
+        # Handle preflight CORS request
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response, 200
     try:
         data = request.json
         uid = data.get('uid')
-        if not uid:
-            return jsonify({'error':'Missing User ID'}), 400
+        name = data.get('name')
+        starting_balance = data.get('startingBalance')
+        starting_ticker = data.get('startingTicker')
 
-        
+        if not uid or not name or not starting_balance or not starting_ticker:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        today = datetime.today()
+        date_opened = {
+            'day': today.day,
+            'month': today.month,
+            'year': today.year,
+        }
+
+        simulation = {
+            'name': name,
+            'dateOpened': date_opened,
+            'profitLoss': 0,
+            'startingBalance': starting_balance,
+            'currentBalance': starting_balance,
+            'winRate': 0,
+            'startingTicker': starting_ticker,
+        }
+
+        sims_ref = db.collection('users').document(uid).collection('sims')
+        new_sim_ref = sims_ref.document()
+        new_sim_ref.set(simulation)
+
+        return jsonify({'message': 'Simulation created successfully', 'simulation': simulation}), 201
+
     except Exception as e:
-        pass
+        return jsonify({'error': f'Error creating simulation: {str(e)}'}), 500
+
+
+@app.route("/news-sentiment/<stock_symbol>", methods=["GET"])
+def get_news_sentiment(stock_symbol):
+    try:
+        sentiment_result = getSentiment(stock_symbol)
+        if not sentiment_result:
+            return jsonify({"error": "Sentiment data not available"}), 404
+
+        labels = [item["date"] for item in sentiment_result]  
+        scores = [item["score"] for item in sentiment_result]  
+
+        return jsonify({"labels": labels, "scores": scores}), 200
+    except Exception as e:
+        return jsonify({"error": str(e), "message": "Failed to fetch sentiment data"}), 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -23,6 +23,7 @@ const Stock = ({ stockSymbol }) => {
                 }
                 const data = await response.json();
                 setStockDetails(data);
+                console.log(data)
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -66,20 +67,25 @@ const Stock = ({ stockSymbol }) => {
     };
 
     return (
-        <div className="graph-container">
-            <img 
-                src={imagePath} 
-                alt={`${stockSymbol} logo`} 
-                className="company-logo" 
-            />
-            <button 
-                className={`save-button ${isSaved ? "saved" : ""}`}
-                onClick={handleSaveStock}
-                title="Save to Portfolio"
-            >
-                <i class="fa-solid fa-heart"></i>
-            </button>
-            <StockGraph stockSymbol={stockSymbol} />
+        <div className="stock-container">
+            {/* Graph and Save Button */}
+            <div className="graph-container">
+                <img 
+                    src={imagePath} 
+                    alt={`${stockSymbol} logo`} 
+                    className="company-logo" 
+                />
+                <button 
+                    className={`save-button ${isSaved ? "saved" : ""}`}
+                    onClick={handleSaveStock}
+                    title="Save to Portfolio"
+                >
+                    <i className="fa-solid fa-heart"></i>
+                </button>
+                <StockGraph stockSymbol={stockSymbol} />
+            
+
+            {/* Stock Details */}
             <div className="stock-details">
                 {isLoading ? (
                     <p>Loading stock details...</p>
@@ -88,44 +94,46 @@ const Stock = ({ stockSymbol }) => {
                 ) : stockDetails ? (
                     <table className="metrics-table">
                         <tbody>
-    {/* Centered First Row */}
-    <tr>
-        <th colSpan="5" style={{ textAlign: "center" }}>Symbol</th>
-        <td colSpan="5" style={{ textAlign: "center" }}>{stockSymbol}</td>
-    </tr>
-    {/* Second Row */}
-    <tr>
-        <th>Market Cap</th>
-        <td>{stockDetails.marketCap || "N/A"}</td>
-        <th>Sector</th>
-        <td>{stockDetails.sector || "N/A"}</td>
-        <th>Industry</th>
-        <td>{stockDetails.industry || "N/A"}</td>
-        <th>EPS</th>
-        <td>{stockDetails.eps || "N/A"}</td>
-        <th>Volume</th>
-        <td>{stockDetails.volume || "N/A"}</td>
-    </tr>
-    {/* Third Row */}
-    <tr>
-        <th>Today's High</th>
-        <td>{stockDetails.highToday || "N/A"}</td>
-        <th>Today's Low</th>
-        <td>{stockDetails.lowToday || "N/A"}</td>
-        <th>Dividend Yield</th>
-        <td>{stockDetails.dividendYield || "N/A"}</td>
-        <th>52-Week High</th>
-        <td>{stockDetails.yearHigh || "N/A"}</td>
-        <th>52-Week Low</th>
-        <td>{stockDetails.yearLow || "N/A"}</td>
-    </tr>
-</tbody>
-
+                            {/* Centered First Row */}
+                            <tr>
+                                <th colSpan="5" style={{ textAlign: "center" }}>Symbol</th>
+                                <td colSpan="5" style={{ textAlign: "center" }}>{stockSymbol}</td>
+                            </tr>
+                            {/* Second Row */}
+                            <tr>
+                                <th>Market Cap</th>
+                                <td>{stockDetails.marketCap || "N/A"}</td>
+                                <th>Sector</th>
+                                <td>{stockDetails.sector || "N/A"}</td>
+                                <th>Industry</th>
+                                <td>{stockDetails.industry || "N/A"}</td>
+                                <th>EPS</th>
+                                <td>{stockDetails.eps || "N/A"}</td>
+                                <th>Volume</th>
+                                <td>{stockDetails.volume || "N/A"}</td>
+                            </tr>
+                            {/* Third Row */}
+                            <tr>
+                                <th>Today's High</th>
+                                <td>{stockDetails.highToday || "N/A"}</td>
+                                <th>Today's Low</th>
+                                <td>{stockDetails.lowToday || "N/A"}</td>
+                                <th>Dividend Yield</th>
+                                <td>{stockDetails.dividendYield || "N/A"}</td>
+                                <th>52-Week High</th>
+                                <td>{stockDetails.yearHigh || "N/A"}</td>
+                                <th>52-Week Low</th>
+                                <td>{stockDetails.yearLow || "N/A"}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 ) : (
                     <p>No stock details available.</p>
                 )}
             </div>
+            </div>
+
+            {/* News Section */}
             <News companyName={stockSymbol} />
         </div>
     );

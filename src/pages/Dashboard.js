@@ -52,9 +52,25 @@ export default function Dashboard({ uid }) {
             const response = await fetch('http://127.0.0.1:5000/create-new-simulation', {
                 method: 'POST',
                 headers: {
-                    
-                }
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    uid,
+                    name: newSim.name,
+                    startingBalance: parseFloat(newSim.startingBalance),
+                    startingTicker: newSim.startingTicker,
+                })
             })
+
+            if (response.ok) {
+                const result = await response.json();
+                setSims((prevSims) => [...prevSims, result.simulation])
+                setShowPopup(false)
+                setNewSim({ name: '', startingBalance: '', startingTicker: '' })
+            } else {
+                const result = await response.json();
+                console.log(result.error)
+            }
         } catch(error) {
             console.log(error.message)
         }
@@ -112,11 +128,38 @@ export default function Dashboard({ uid }) {
                             </table>
                         </div>
                         <div className="buttons-cont">
-                            <button className="open-new">Open New</button>
+                            <button className="open-new" onClick={() => setShowPopup(true)}>Open New</button>
                         </div>
                     </>
                 )}
             </div>
+            {showPopup && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2>Create New Simulation</h2>
+                        <input
+                            type="text"
+                            placeholder="Simulation Name"
+                            value={newSim.name}
+                            onChange={(e) => setNewSim({ ...newSim, name: e.target.value })}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Starting Balance ($)"
+                            value={newSim.startingBalance}
+                            onChange={(e) => setNewSim({ ...newSim, startingBalance: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Starting Ticker"
+                            value={newSim.startingTicker}
+                            onChange={(e) => setNewSim({ ...newSim, startingTicker: e.target.value })}
+                        />
+                        <button onClick={createNewSim}>Create</button>
+                        <button onClick={() => setShowPopup(false)}>Cancel</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
