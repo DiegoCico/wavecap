@@ -269,15 +269,12 @@ def get_stock_details(stock_symbol):
     try:
         stock = yf.Ticker(stock_symbol)
 
-        # Try to get stock info
+        # Fetch stock info
         stock_info = stock.info
         if not stock_info:
-            return Response(
-                json.dumps({"error": "No data found for this stock symbol"}), 
-                status=404, 
-                mimetype='application/json'
-            )
+            return jsonify({"error": "No data found for this stock symbol"}), 404
 
+        # Additional stock metrics
         stock_details = {
             "stockName": stock_info.get("shortName", "Unknown Stock"),
             "currentPrice": stock_info.get("currentPrice", "N/A"),
@@ -287,26 +284,17 @@ def get_stock_details(stock_symbol):
             "volume": stock_info.get("volume", "N/A"),
             "highToday": stock_info.get("dayHigh", "N/A"),
             "lowToday": stock_info.get("dayLow", "N/A"),
+            "dividendYield": stock_info.get("dividendYield", "N/A"),
+            "yearHigh": stock_info.get("fiftyTwoWeekHigh", "N/A"),
+            "yearLow": stock_info.get("fiftyTwoWeekLow", "N/A"),
+            "eps": stock_info.get("trailingEps", "N/A")
         }
 
-        return Response(
-            json.dumps(stock_details), 
-            status=200, 
-            mimetype='application/json'
-        )
+        return jsonify(stock_details), 200
 
     except Exception as e:
-        # Log the error for debugging
-        print(f"Error: {e}")
-        error_response = {
-            "error": "Failed to fetch stock details",
-            "message": str(e)
-        }
-        return Response(
-            json.dumps(error_response), 
-            status=500, 
-            mimetype='application/json'
-        )
+        return jsonify({"error": "Failed to fetch stock details", "message": str(e)}), 500
+
 
 @app.route("/news/<company_name>", methods=["GET"])
 def get_company_news(company_name):
@@ -434,7 +422,17 @@ def save_stock():
     except Exception as e:
         return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
 
+@app.route("/create-new-simulation", methods=['OPTIONS', 'POST'])
+def new_simulation():
+    try:
+        data = request.json
+        uid = data.get('uid')
+        if not uid:
+            return jsonify({'error':'Missing User ID'}), 400
 
+        
+    except Exception as e:
+        pass
 
 if __name__ == "__main__":
     app.run(debug=True)

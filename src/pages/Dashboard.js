@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import '../css/Dashboard.css';
-import {useParams} from 'react-router-dom'
 import PaperTrading from './PaperTrading.js'
 
 export default function Dashboard({ uid }) {
     const [sims, setSims] = useState([])
     const [showSim, setShowSim] = useState(false)
     const [currentSim, setCurrentSim] = useState({})
+    const [showSims, setShowSims] = useState(true)
+    const [showPopup, setShowPopup] = useState(false)
+    const [newSim, setNewSim] = useState({
+        name: '',
+        startingBalance: '',
+        startingTicker: ''
+    })
 
     useEffect(() => {
         const fetchUserSims = async() => {
@@ -38,18 +44,29 @@ export default function Dashboard({ uid }) {
     const openSim = (sim) => {
         setShowSim(true)
         setCurrentSim(sim)
+        setShowSims(false)
+    }
+
+    const createNewSim = async() => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/create-new-simulation', {
+                method: 'POST',
+                headers: {
+                    
+                }
+            })
+        } catch(error) {
+            console.log(error.message)
+        }
     }
 
     function formatDate(dateOpened) {
-        // Check if dateOpened is valid and has the expected properties
         if (!dateOpened || typeof dateOpened !== 'object') return 'Invalid date';
     
         const { day, month, year } = dateOpened;
     
-        // Ensure all parts are valid numbers
         if (typeof day !== 'number' || typeof month !== 'number' || typeof year !== 'number') return 'Invalid date';
     
-        // Format the date to mm/dd/yyyy
         const formattedDate = `${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`;
         return formattedDate;
     }
@@ -60,9 +77,10 @@ export default function Dashboard({ uid }) {
                 <h1>Dashboard</h1>
             </div>
             <div className="dashboard-main">
-                {showSim ? (
-                    <PaperTrading sim={currentSim} />
-                ) : (
+                {showSim && (
+                    <PaperTrading sim={currentSim} setShowSims={setShowSims} setShowSim={setShowSim} />
+                )}
+                {showSims && (
                     <>
                         <div className="sims-title">
                             <h2>Your Simulations</h2>

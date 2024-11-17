@@ -11,7 +11,7 @@ const Homepage = () => {
     const [stockSymbol, setStockSymbol] = useState("");
     const [showGraph, setShowGraph] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
-    const [showDash, setShowDash] = useState(false);
+    const [showDash, setShowDash] = useState(true);
     const [topGainer, setTopGainer] = useState(null);
     const { uid } = useParams();
     const navigate = useNavigate();

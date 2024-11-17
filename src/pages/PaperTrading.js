@@ -1,13 +1,20 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import TradingViewChart from '../components/TradingViewChart'
-import '../css/PaperTrading.css'
+import TradingViewChart from "../components/TradingViewChart";
+import "../css/PaperTrading.css";
 
-export default function PaperTrading({ sim }) {
+export default function PaperTrading({ sim, setShowSims, setShowSim }) {
+    const handleBack = () => {
+        setShowSims(true);
+        setShowSim(false);
+    };
+
     return (
         <div className="paper-trading">
             {/* Simulation Header */}
             <div className="sim-header">
+                <button onClick={handleBack} className="back-btn">
+                    <i className="fa-solid fa-arrow-left"></i>
+                </button>
                 <h1>{sim.name}</h1>
             </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StockGraph from "../components/StockGraph";
 import News from "../components/News";
+import "../css/Stock.css"; // Assuming the CSS is saved in Stock.css
 
 const Stock = ({ stockSymbol }) => {
     const { uid } = useParams(); // Extract uid from the URL
@@ -16,7 +17,7 @@ const Stock = ({ stockSymbol }) => {
         const fetchStockDetails = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`/stock-name/${stockSymbol}`);
+                const response = await fetch(`http://127.0.0.1:5000/stock-name/${stockSymbol}`);
                 if (!response.ok) {
                     throw new Error(`Server responded with status ${response.status}: ${response.statusText}`);
                 }
@@ -39,7 +40,7 @@ const Stock = ({ stockSymbol }) => {
         }
 
         try {
-            const response = await fetch("/save-stock", {
+            const response = await fetch("http://127.0.0.1:5000/save-stock", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -65,56 +66,66 @@ const Stock = ({ stockSymbol }) => {
     };
 
     return (
-        <div className="graph-container" style={{ position: "relative", padding: "20px" }}>
+        <div className="graph-container">
             <img 
                 src={imagePath} 
                 alt={`${stockSymbol} logo`} 
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "50px",
-                    height: "50px",
-                    margin: "10px",
-                }} 
+                className="company-logo" 
             />
             <button 
-                style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "24px",
-                    color: isSaved ? "red" : "black",
-                }}
+                className={`save-button ${isSaved ? "saved" : ""}`}
                 onClick={handleSaveStock}
                 title="Save to Portfolio"
             >
-                <i className="fa-regular fa-heart"></i>
+                <i class="fa-solid fa-heart"></i>
             </button>
             <StockGraph stockSymbol={stockSymbol} />
-            <div className="stock-details" style={{ marginTop: "20px", textAlign: "center" }}>
+            <div className="stock-details">
                 {isLoading ? (
                     <p>Loading stock details...</p>
                 ) : error ? (
                     <p style={{ color: "red" }}>{error}</p>
                 ) : stockDetails ? (
-                    <div style={{ background: "#f9f9f9", padding: "10px", borderRadius: "5px" }}>
-                        <h3>{stockDetails.stockName || "Unknown Stock"}</h3>
-                        <p><strong>Symbol:</strong> {stockSymbol}</p>
-                        <p><strong>Market Cap:</strong> {stockDetails.marketCap || "N/A"}</p>
-                        <p><strong>Sector:</strong> {stockDetails.sector || "N/A"}</p>
-                        <p><strong>Industry:</strong> {stockDetails.industry || "N/A"}</p>
-                        <p><strong>EPS:</strong> {stockDetails.eps || "N/A"}</p>
-                    </div>
+                    <table className="metrics-table">
+                        <tbody>
+    {/* Centered First Row */}
+    <tr>
+        <th colSpan="5" style={{ textAlign: "center" }}>Symbol</th>
+        <td colSpan="5" style={{ textAlign: "center" }}>{stockSymbol}</td>
+    </tr>
+    {/* Second Row */}
+    <tr>
+        <th>Market Cap</th>
+        <td>{stockDetails.marketCap || "N/A"}</td>
+        <th>Sector</th>
+        <td>{stockDetails.sector || "N/A"}</td>
+        <th>Industry</th>
+        <td>{stockDetails.industry || "N/A"}</td>
+        <th>EPS</th>
+        <td>{stockDetails.eps || "N/A"}</td>
+        <th>Volume</th>
+        <td>{stockDetails.volume || "N/A"}</td>
+    </tr>
+    {/* Third Row */}
+    <tr>
+        <th>Today's High</th>
+        <td>{stockDetails.highToday || "N/A"}</td>
+        <th>Today's Low</th>
+        <td>{stockDetails.lowToday || "N/A"}</td>
+        <th>Dividend Yield</th>
+        <td>{stockDetails.dividendYield || "N/A"}</td>
+        <th>52-Week High</th>
+        <td>{stockDetails.yearHigh || "N/A"}</td>
+        <th>52-Week Low</th>
+        <td>{stockDetails.yearLow || "N/A"}</td>
+    </tr>
+</tbody>
+
+                    </table>
                 ) : (
                     <p>No stock details available.</p>
                 )}
             </div>
-
-            {/* Use the News Component */}
             <News companyName={stockSymbol} />
         </div>
     );

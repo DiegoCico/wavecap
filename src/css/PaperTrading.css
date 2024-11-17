@@ -4,14 +4,37 @@
     flex-direction: column;
     background-color: #2B2B2B;
     color: white;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 /* Simulation header */
+.sim-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 1rem; /* Add padding around header */
+    background-color: #2B2B2B;
+    border-bottom: 1px solid #656565; /* Optional: Add a bottom border */
+}
+
 .sim-header h1 {
     font-size: 2rem;
-    text-align: center;
+    margin-left: 1rem; /* Add space between the button and the title */
+    color: white;
 }
+
+/* Back button styling */
+.back-btn {
+    background-color: transparent; /* No background */
+    border: none; /* No border */
+    color: white; /* White arrow */
+    font-size: 1.5rem; /* Adjust size of the arrow */
+    cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+/* .back-btn i {
+    transform: rotate(180deg);
+} */
 
 /* Main content container */
 .paper-trading-main {

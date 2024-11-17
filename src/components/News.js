@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
-import "../css/News.css"; 
+import React, { useState, useEffect } from "react";
+import "../css/News.css"; // Assuming the CSS is in the same directory
 
 const News = ({ companyName }) => {
-    const [news, setNews] = useState([]);
+    const [newsData, setNewsData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchNews = async () => {
+            setIsLoading(true);
             try {
-                const response = await fetch(`/news/${companyName}`);
+                const response = await fetch(`http://127.0.0.1:5000/news/${companyName}`);
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch news: ${response.status}`);
+                    throw new Error(`Error fetching news: ${response.statusText}`);
                 }
                 const data = await response.json();
-                setNews(data.news);
+                setNewsData(data.news || []);
             } catch (err) {
-                console.error(err);
                 setError(err.message);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -25,27 +28,26 @@ const News = ({ companyName }) => {
 
     return (
         <div className="news-container">
-            <h3>Recent News About {companyName}</h3>
-            {error ? (
+            <h4>Latest News on {companyName}</h4>
+            {isLoading ? (
+                <p>Loading news...</p>
+            ) : error ? (
                 <p style={{ color: "red" }}>{error}</p>
-            ) : news.length > 0 ? (
-                news.map((article, index) => (
+            ) : newsData.length > 0 ? (
+                newsData.map((item, index) => (
                     <div key={index} className="news-item">
-                        <a href={article.link} target="_blank" rel="noopener noreferrer">
-                            {article.title}
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            {item.title}
                         </a>
-                        <p>{article.description || "No description available."}</p>
+                        <p>{item.description || "No description available."}</p>
                         <small>
-                            <span>Source:</span> {article.source}
-                        </small>
-                        <br />
-                        <small>
-                            <span>Published:</span> {new Date(article.published).toLocaleString()}
+                            Source: <span>{item.source || "Unknown"}</span> | Published:{" "}
+                            <span>{new Date(item.published).toLocaleDateString()}</span>
                         </small>
                     </div>
                 ))
             ) : (
-                <p>No news articles available.</p>
+                <p>No news articles found.</p>
             )}
         </div>
     );
