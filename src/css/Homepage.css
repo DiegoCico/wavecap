@@ -1,77 +1,95 @@
+html, body {
+    height: 100%; /* Ensure body height matches viewport */
+    overflow: hidden; /* Disable scrolling for the entire page */
+}
+
+/* General Layout */
 .homepage {
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(12, 1fr); /* Increase total grid columns for finer control */
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    height: 100vh; /* Ensure the layout scales with the viewport height */
 }
 
+/* Sidebar container */
 .home-sidenav {
-    grid-area: 1 / 1 / 6 / 3;
+    height: 100vh; /* Full height of the viewport */
+    grid-area: 1 / 1 / 6 / 3; /* Reduced width to span 2 grid columns */
     background-color: #000000;
-    height: 100vh;
+    display: flex; /* Allows flexible layout */
+    flex-direction: column; /* Stack children vertically */
+    box-sizing: border-box; /* Ensure padding doesn't affect height */
+    padding: 1rem; /* Add padding for content inside */
 }
 
+/* Logo container */
 .logo-cont {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    margin-bottom: 1rem; /* Add spacing below the logo */
 }
 
 .logo-image {
-    width: 200px;
+    max-width: 80%; /* Scale the logo dynamically */
     height: auto;
-    margin: 2rem;
 }
 
+/* Search container */
 .search-cont {
     display: flex;
-    justify-content: center; /* Centers the input */
+    justify-content: center;
     align-items: center;
     margin: 1rem 0.6rem;
-
 }
 
 .search-box {
-    width: 300px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
-    background-color: #323232; /* Dark background */
-    color: white; /* White text */
-    border: none; /* Remove default border */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 16px; /* Adjust font size */
-    text-align: center; /* Center text inside the input */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-    outline: none; /* Remove outline on focus */
+    width: 100%; /* Make input responsive to container width */
+    max-width: 400px; /* Limit the maximum width */
+    height: 50px;
+    background-color: #323232;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    outline: none;
 }
 
 .search-box::placeholder {
-    color: #ccc; /* Placeholder text color */
-    font-size: 16px; /* Adjust font size of placeholder */
+    color: #ccc;
+    font-size: 1rem;
 }
 
 .search-box:focus {
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5); /* Enhance shadow on focus */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Divider line */
 .custom-line {
-    height: 1px; /* Set height */
-    /* background: linear-gradient(to right, transparent, #4d4d4d, transparent); Gradient effect */
+    height: 1px;
     background-color: #656565;
-    margin: 2rem 0.6rem; /* Spacing around the line */
+    margin: 1rem 0.6rem;
 }
 
-.portfolio-cont, .movers-cont {
-    background-color: #232323; /* Matches the dark gray in the image */
-    border-radius: 10px; /* Rounded corners */
-    margin: 1rem 0.6rem; /* Center horizontally and add spacing */
-    /* padding: 10px; */
+/* Portfolio and Movers containers */
+.portfolio-cont,
+.movers-cont {
+    background-color: #232323;
+    border-radius: 10px;
+    margin: 1rem;
     color: white;
     text-align: left;
+    height: 40%; /* Maintain proportional height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent content overflow */
 }
 
-.portfolio-header p{
+.portfolio-header p {
     margin: 0;
     color: white;
 }
@@ -79,47 +97,21 @@
 .portfolio-body p {
     margin: 0;
     color: #A1A1A1;
-    font-size: 20px;
+    font-size: 1rem;
     text-align: center;
 }
 
-.portfolio-header{
-    background-color: #323232; /* Slightly darker header background */
-    border-radius: 10px 10px 0 0; /* Round top corners */
-    padding: 10px;
-    font-size: 10px;
-    /* font-weight: bold; */
+/* Header styling for portfolio and movers */
+.portfolio-header,
+.movers-header {
+    background-color: #323232;
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+    font-size: 0.9rem;
     color: #fff;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-}
-
-.portfolio-body, .movers-body {
-    padding: 10px;
-    font-size: 14px;
-    color: #232323; /* Light gray for the body text */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.portfolio-body {
-    height: 250px;
-}
-
-.movers-body {
-    height: 200px;
-}
-
-.movers-header{
-    background-color: #323232; /* Slightly darker header background */
-    border-radius: 10px 10px 0 0; /* Round top corners */
-    padding: 10px;
-    font-size: 10px;
-    /* font-weight: bold; */
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
 }
 
 .movers-header p {
@@ -127,53 +119,243 @@
     color: #A1A1A1;
 }
 
-/* Sign-out Button Container */
-.signout-cont {
+/* Adjusted heights for portfolio and movers */
+.portfolio-body,
+.movers-body {
+    padding: 1rem;
+    font-size: 0.9rem;
     display: flex;
-    justify-content: center; /* Center the button */
     align-items: center;
-    margin: 1rem 0.6rem; /* Add spacing around the button */
+    justify-content: center;
 }
 
-/* Default Button Style */
-.signout-cont button {
-    background-color: #323232; /* Default gray background */
-    color: #ff0000; /* Default red icon color */
-    border: none;
-    border-radius: 10px; /* Rounded corners */
-    width: 100%; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
+.portfolio-body {
+    height: 55%; /* Use relative height for responsiveness */
+    max-height: 200px; /* Limit maximum height */
+}
+
+.movers-body {
+    height: 50%; /* Use relative height for responsiveness */
+    max-height: 150px; /* Limit maximum height */
+}
+
+/* Sign-out Button */
+.signout-cont {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px; /* Adjust icon size */
+    margin: 1rem;
+}
+
+.signout-cont button {
+    background-color: #323232;
+    color: #ff0000;
+    border: none;
+    border-radius: 10px;
+    width: 100%; /* Responsive width */
+    max-width: 300px; /* Limit the maximum width */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    transition: all 0.3s ease;
 }
 
-/* Hover Effect */
 .signout-cont button:hover {
-    background-color: #ff0000; /* Red background on hover */
-    color: #323232; /* Gray icon color on hover */
+    background-color: #ff0000;
+    color: #323232;
 }
 
-/* Flip the Icon Vertically */
 .signout-cont button:hover i {
-    transform: rotate(180deg); /* Rotate the icon vertically */
-    transition: transform 0.3s ease; /* Smooth rotation transition */
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
 
-/* Icon Styling */
 .signout-cont i {
-    transition: transform 0.3s ease; /* Smooth transition for the flip */
+    transition: transform 0.3s ease;
 }
 
+/* Main content area */
 .home-main {
-    grid-area: 1 / 3 / 6 / 10;
+    grid-area: 1 / 3 / 6 / 13; /* Adjusted to take up more space */
     background-color: #2B2B2B;
-    height: 100vh;
+    padding: 2rem; /* Add spacing around main content */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Add spacing between sections */
+    overflow: auto; /* Prevent content overflow */
 }
 
-.home-title {
+/* Container for the graph */
+.graph-container {
+    background-color: #323232; /* Dark background for graph */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1.5rem; /* Add padding inside */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for stock data */
+.stock-data {
+    background-color: #232323; /* Darker background for data section */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.stock-data h2 {
+    font-size: 1.5rem;
     color: white;
+    margin-bottom: 0.5rem;
+}
+
+.stock-data p {
+    font-size: 1rem;
+    color: #A1A1A1;
+}
+
+/* Responsive Design with Media Queries */
+@media (max-width: 1024px) {
+    .homepage {
+        grid-template-columns: repeat(8, 1fr); /* Adjust total grid for smaller screens */
+    }
+
+    .home-sidenav {
+        grid-area: 1 / 1 / 6 / 2; /* Further reduce to 1 column */
+    }
+
+    .home-main {
+        grid-area: 1 / 2 / 6 / 9; /* Adjust main content accordingly */
+    }
+
+    .graph-container,
+    .stock-data {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .portfolio-body {
+        height: 20vh; /* Reduce height for smaller screens */
+        max-height: 150px;
+    }
+
+    .movers-body {
+        height: 15vh; /* Reduce height for smaller screens */
+        max-height: 120px;
+    }
+
+    .signout-cont button {
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage {
+        grid-template-columns: repeat(6, 1fr); /* Adjust for smaller screens */
+    }
+
+    .home-sidenav {
+        grid-area: 1 / 1 / 6 / 2; /* Keep narrow */
+    }
+
+    .home-main {
+        grid-area: 1 / 2 / 6 / 7; /* Adjust for new grid setup */
+    }
+
+    .graph-container,
+    .stock-data {
+        padding: 0.8rem;
+    }
+
+    .logo-image {
+        width: 50%; /* Scale down the logo */
+    }
+
+    .search-box {
+        font-size: 0.9rem; /* Reduce input font size */
+        height: 40px; /* Adjust height */
+    }
+
+    .portfolio-header,
+    .movers-header {
+        font-size: 0.8rem; /* Reduce header font size */
+        padding: 0.8rem;
+    }
+
+    .signout-cont button {
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage {
+        grid-template-columns: repeat(4, 1fr); /* Reduce total columns for mobile */
+    }
+
+    .home-sidenav {
+        grid-area: 1 / 1 / 6 / 2; /* Narrower for mobile */
+    }
+
+    .home-main {
+        grid-area: 1 / 2 / 6 / 5; /* Adjust main content */
+    }
+
+    .search-box {
+        width: 90%; /* Make input nearly full-width */
+        height: 35px; /* Reduce height */
+    }
+
+    .portfolio-body,
+    .movers-body {
+        font-size: 0.7rem; /* Further reduce font size */
+    }
+
+    .signout-cont button {
+        font-size: 0.8rem;
+        height: 40px; /* Adjust button height */
+    }
+}
+
+.suggestions-list {
+    position: absolute;
+    top: 20%; /* Adjusted to appear below the search box */
+    left: 10px;
+    background: #232323; /* Match the theme's darker background */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #323232; /* Subtle border to differentiate from background */
+    width: 15%; /* Match the search box width */
+    list-style: none;
+    padding: 0;
+    margin: 0 0.6ram; 
+    max-height: 200px; /* Limit the dropdown's height */
+    overflow-y: auto; /* Enable scrolling for overflow */
+    z-index: 1000; /* Ensure it's above other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
+}
+
+.suggestion-item {
+    padding: 0.8rem 1rem; /* Add padding for better clickability */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #ccc; /* Light text color */
+    transition: all 0.3s ease;
+}
+
+.suggestion-item:hover {
+    background-color: #323232; /* Highlighted background on hover */
+    color: white; /* Change text color on hover */
+}
+
+.suggestions-list::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar */
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+    background-color: #656565; /* Darker scrollbar thumb */
+    border-radius: 5px;
 }

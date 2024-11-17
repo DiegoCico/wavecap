@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
 import os
-from config import app
+from config import app, PREDEFINED_TICKERS
 import yfinance as yf
 import json
 
@@ -154,8 +154,6 @@ def stock_graph(stock_symbol, interval):
                 "c": float(row['Close']),
             })
 
-        print(candle_data)
-
         return jsonify({"labels": labels, "data": data, "candleData": candle_data}), 200
 
     except Exception as e:
@@ -163,6 +161,45 @@ def stock_graph(stock_symbol, interval):
             "message": "Error generating stock data.",
             "error": str(e)
         }), 500
+
+
+@app.route("/autocomplete", methods=["GET"])
+def autocomplete():
+    """
+    Fetch up to 5 stock ticker suggestions using predefined data first, 
+    then fallback to yfinance if no matches are found.
+    """
+    query = request.args.get("query", "").upper()
+    if not query:
+        return jsonify({"suggestions": []})
+
+    try:
+        # Filter predefined tickers by query
+        predefined_matches = [
+            ticker for ticker in PREDEFINED_TICKERS
+            if query in ticker["symbol"]
+        ][:5]
+
+        # If matches are found in predefined, return them
+        if predefined_matches:
+            return jsonify({"suggestions": predefined_matches})
+
+        # Fallback: Fetch matching tickers from yfinance
+        stock_list = yf.Tickers(query)  # Retrieve tickers matching query
+        tickers = list(stock_list.tickers.keys())
+
+        # Get details for the first 5 matches dynamically
+        dynamic_matches = []
+        for ticker in tickers[:5]:
+            stock_info = yf.Ticker(ticker).info
+            dynamic_matches.append({
+                "symbol": ticker,
+                "name": stock_info.get("shortName", "Unknown")
+            })
+
+        return jsonify({"suggestions": dynamic_matches})
+    except Exception as e:
+        return jsonify({"error": str(e), "message": "Error fetching stock suggestions"}), 500
 
 
 if __name__ == "__main__":

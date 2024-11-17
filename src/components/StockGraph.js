@@ -59,27 +59,40 @@ function StockGraph({ stockSymbol }) {
         throw new Error(`Error: ${response.statusText}`);
       }
       const data = await response.json();
-
-      // Clean data and ensure valid numeric values
+  
       const cleanedData = data.candleData.map((candle) => ({
-        x: new Date(candle.x).getTime(), // Convert date to timestamp
+        x: new Date(candle.x).getTime(),
         o: candle.o,
         h: candle.h,
         l: candle.l,
         c: candle.c,
       }));
-
-      // Calculate price change percentage for line chart
+  
       const priceChangePercentage =
-        ((data.data[data.data.length - 1] - data.data[0]) /
-          data.data[0]) *
-        100;
-
+        ((data.data[data.data.length - 1] - data.data[0]) / data.data[0]) * 100;
+  
       const lineColor =
         priceChangePercentage >= 0
-          ? "rgba(0, 255, 0, 1)"
-          : "rgba(255, 0, 0, 1)";
-
+          ? "rgba(0, 128, 0, 1)" // Softer green
+          : "rgba(128, 0, 0, 1)"; // Softer red
+  
+      // Create gradient for the background fill
+      const chart = chartRef.current?.ctx;
+      let gradient = null;
+      if (chart) {
+        gradient = chart.createLinearGradient(0, 0, 0, chart.canvas.height);
+  
+        if (priceChangePercentage >= 0) {
+          // Green gradient for positive change
+          gradient.addColorStop(0, "rgba(0, 128, 0, 0.4)"); // Softer green, semi-transparent
+          gradient.addColorStop(1, "rgba(0, 128, 0, 0)");   // Transparent
+        } else {
+          // Red gradient for negative change
+          gradient.addColorStop(0, "rgba(128, 0, 0, 0.4)"); // Softer red, semi-transparent
+          gradient.addColorStop(1, "rgba(128, 0, 0, 0)");   // Transparent
+        }
+      }
+  
       const lineChartData = {
         labels: data.labels,
         datasets: [
@@ -87,27 +100,31 @@ function StockGraph({ stockSymbol }) {
             label: stockSymbol,
             data: data.data,
             borderColor: lineColor,
+            backgroundColor: gradient, // Apply gradient fill
             tension: 0.1,
+            fill: true, // Enable area under the line
           },
         ],
       };
-
+  
       const candleChartData = {
         labels: data.labels,
         datasets: [
           {
             label: stockSymbol,
-            data: cleanedData, // Now using cleaned OHLC data
+            data: cleanedData,
             borderColor: lineColor,
           },
         ],
       };
-
+  
       setChartData(chartType === "line" ? lineChartData : candleChartData);
     } catch (err) {
       setError("Error fetching data");
     }
   };
+  
+  
 
   const options = {
     responsive: true,
@@ -132,8 +149,9 @@ function StockGraph({ stockSymbol }) {
           color: "white",
         },
         grid: {
-          drawOnChartArea: true,
-          color: "rgba(255, 255, 255, 0.1)",
+          display: false, // Completely remove grid lines on the X-axis
+          drawOnChartArea: false, // Prevent drawing grid lines on the chart
+          drawBorder: false, // Remove the border line on the X-axis
         },
       },
       y: {
@@ -146,11 +164,15 @@ function StockGraph({ stockSymbol }) {
           color: "white",
         },
         grid: {
-          display: false,
+          display: false, // Remove grid lines on the Y-axis
+          drawOnChartArea: false,
+          drawBorder: false,
         },
       },
     },
   };
+  
+  
 
   return (
     <div className="stock-graph-container">
