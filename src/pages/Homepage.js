@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import StockGraph from "../components/StockGraph";
 import Stock from "./Stock";
 import Dashboard from "./Dashboard";
@@ -16,6 +16,7 @@ const Homepage = () => {
     const { uid } = useParams();
     const inputRef = useRef(null);
     const imagePath = `${process.env.PUBLIC_URL}/ticker_icons/${stockSymbol}.png`
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchPortfolio();
@@ -143,6 +144,28 @@ const Homepage = () => {
         setTopGainers(staticData);
     }, []);
 
+    const handleSignout = async() => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/logout', {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ uid }),
+            })
+            const data = await response.json()
+            if (response.ok) {
+                console.log(data.message)
+                navigate('/')
+            } else {
+                console.log(data.error)
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
 
 console.log(topGainers)
     return (
@@ -238,7 +261,7 @@ console.log(topGainers)
                     )}
             </div>
                 <div className="signout-cont">
-                    <button onClick={handleOpenDash}>
+                    <button onClick={handleSignout}>
                         <i className="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </div>

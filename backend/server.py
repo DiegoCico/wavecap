@@ -341,9 +341,6 @@ def get_stock_details(stock_symbol):
 
 @app.route("/news/<company_name>", methods=["GET"])
 def get_company_news(company_name):
-    """
-    Fetch recent news about a specific company using the NewsData.io API.
-    """
     try:
         # Base URL for NewsData.io
         url = "https://newsdata.io/api/1/news"
