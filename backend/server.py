@@ -6,6 +6,8 @@ import os
 from config import app, PREDEFINED_TICKERS
 import yfinance as yf
 import json
+from yahoo_fin import stock_info as si
+
 
 # Load environment variables
 load_dotenv()
@@ -200,6 +202,36 @@ def autocomplete():
         return jsonify({"suggestions": dynamic_matches})
     except Exception as e:
         return jsonify({"error": str(e), "message": "Error fetching stock suggestions"}), 500
+
+
+@app.route("/top-gainers", methods=["GET"])
+def top_gainers():
+    try:
+        # Fetch the top gainers
+        gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
+
+        # Prepare the data
+        top_gainers_list = []
+        for index, row in gainers.iterrows():
+            symbol = row['Symbol']
+            name = row['Name']
+            price = row['Price (Intraday)']
+            change = row['% Change']
+            high = row['Day\'s Range'].split(' - ')[1]
+            low = row['Day\'s Range'].split(' - ')[0]
+
+            top_gainers_list.append({
+                "symbol": symbol,
+                "name": name,
+                "price": price,
+                "percentChange": change,
+                "high": high,
+                "low": low
+            })
+
+        return jsonify(top_gainers_list)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

@@ -359,3 +359,11 @@ html, body {
     background-color: #656565; /* Darker scrollbar thumb */
     border-radius: 5px;
 }
+
+.gainer-item p {
+    margin: 5px 0;
+}
+
+.gainer-item p:last-child {
+    font-weight: bold;
+}
