@@ -1,0 +1,73 @@
+/* Main container */
+.paper-trading {
+    display: flex;
+    flex-direction: column;
+    background-color: #2B2B2B;
+    color: white;
+    height: 100vh;
+}
+
+/* Simulation header */
+.sim-header h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Main content container */
+.paper-trading-main {
+    display: flex;
+    gap: 2rem; /* Space between chart and details */
+    justify-content: space-between; /* Push chart and details apart */
+    align-items: flex-start; /* Align top edges */
+    height: 100%;
+}
+
+/* Chart container */
+.chart-container {
+    flex: 3; /* Chart takes 3/4 of the space */
+    padding: 1rem;
+    background-color: #232323;
+    border-radius: 10px;
+    height: 500px; /* Set height for consistency */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Account details container */
+.account-details {
+    flex: 1; /* Details take 1/4 of the space */
+    padding: 1rem;
+    background-color: #232323;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Table styling for account details */
+.account-details table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    color: white;
+}
+
+.account-details th,
+.account-details td {
+    padding: 0.5rem 1rem;
+}
+
+.account-details th {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ccc;
+    background-color: #323232;
+    border-bottom: 1px solid #444;
+}
+
+.account-details td {
+    font-size: 1.2rem;
+}
+
+.account-details .positive {
+    color: #4caf50; /* Green for positive values */
+}

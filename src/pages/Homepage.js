@@ -18,7 +18,7 @@ const Homepage = () => {
     const inputRef = useRef(null);
 
     useEffect(() => {
-        fetchTopGainer();
+        // fetchTopGainer();
     }, []);
 
     const fetchTopGainer = async () => {
@@ -172,7 +172,7 @@ const Homepage = () => {
                     <Stock stockSymbol={stockSymbol} />
             ) : showDash ? (
                 <div className="dashboard-container">
-                    <Dashboard />
+                    <Dashboard uid={uid}/>
                 </div>
             ) : (
                 <h1 className="home-title">Search for a stock to view its details</h1>

@@ -1,0 +1,76 @@
+.dashboard {
+    padding: 2rem;
+    color: white;
+}
+
+.dashboard-title h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.dashboard-main {
+    background-color: #2B2B2B;
+    border-radius: 10px;
+}
+
+.sims-title h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #A1A1A1;
+    margin-bottom: 1rem;
+}
+
+.simulations-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.simulations-table th {
+    background-color: #323232;
+    color: #A1A1A1;
+    font-weight: bold;
+    text-align: left;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.simulations-table td {
+    background-color: #2B2B2B;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #3C3C3C;
+}
+
+.simulations-table tr:last-child td {
+    border-bottom: none;
+}
+
+.simulations-table .positive {
+    color: #00FF00; /* Bright green for positive values */
+}
+
+.buttons-cont {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+
+.open-new {
+    background-color: #323232;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.open-new:hover {
+    background-color: white;
+    color: black;
+}

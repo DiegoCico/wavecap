@@ -8,4 +8,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative; /* Ensure child absolute positioning works */
 }
+
+/* Company logo styling */
+.company-logo {
+    position: absolute; /* Position relative to the container */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    width: 40px; /* Smaller width */
+    height: 40px; /* Smaller height */
+    object-fit: contain; /* Maintain aspect ratio */
+    border-radius: 3px; /* Optional: Slight rounding */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add slight shadow */
+    background-color: #fff; /* Optional: White background for contrast */
+    padding: 2px; /* Optional: Add padding for better visibility */
+}
+
+/* Add this to your CSS file */
+.stock-details {
+    background-color: #f5f5f5; /* Light background for details */
+    padding: 10px; /* Add spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-size: 14px; /* Font size for readability */
+}
+

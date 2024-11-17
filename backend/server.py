@@ -1,12 +1,15 @@
-from flask import jsonify, request, session, make_response
+from flask import jsonify, request, session, make_response, Flask
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
 import os
+import requests
 from config import app, PREDEFINED_TICKERS
 import yfinance as yf
 import json
 from yahoo_fin import stock_info as si
+from sambanova_client import sambanova_client
+
 
 
 # Load environment variables
@@ -22,6 +25,14 @@ firebase_admin.initialize_app(cred)
 finhub_key = os.getenv("FINHUB_API")
 if not finhub_key:
     raise ValueError("FINHUB environment variable not set.")
+
+NEWS_API_KEY = os.getenv("NEWSDATA_API")
+
+SAMBANOVA_API_URL = "https://api.sambanova.ai/v1/chat/completions"
+SAMBANOVA_API_KEY = os.getenv("SAMVANOVA_API")
+if not SAMBANOVA_API_KEY:
+    raise ValueError("SAMBANOVA_API_KEY environment variable not set.")
+
 
 # Initialize Firestore
 db = firestore.client()
@@ -226,33 +237,203 @@ def autocomplete():
 
 @app.route("/top-gainers", methods=["GET"])
 def top_gainers():
-    pass
-    # try:
-    #     # Fetch the top gainers
-    #     gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
+    try:
+        # Fetch the top gainers
+        gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
 
-    #     # Prepare the data
-    #     top_gainers_list = []
-    #     for index, row in gainers.iterrows():
-    #         symbol = row['Symbol']
-    #         name = row['Name']
-    #         price = row['Price (Intraday)']
-    #         change = row['% Change']
-    #         high = row['Day\'s Range'].split(' - ')[1]
-    #         low = row['Day\'s Range'].split(' - ')[0]
+        # Prepare the data
+        top_gainers_list = []
+        for index, row in gainers.iterrows():
+            symbol = row['Symbol']
+            name = row['Name']
+            price = row['Price (Intraday)']
+            change = row['% Change']
+            high = row['Day\'s Range'].split(' - ')[1]
+            low = row['Day\'s Range'].split(' - ')[0]
 
-    #         top_gainers_list.append({
-    #             "symbol": symbol,
-    #             "name": name,
-    #             "price": price,
-    #             "percentChange": change,
-    #             "high": high,
-    #             "low": low
-    #         })
+            top_gainers_list.append({
+                "symbol": symbol,
+                "name": name,
+                "price": price,
+                "percentChange": change,
+                "high": high,
+                "low": low
+            })
 
-    #     return jsonify(top_gainers_list)
-    # except Exception as e:
-    #     return jsonify({"error": str(e)}), 500
+        return jsonify(top_gainers_list)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/stock-name/<stock_symbol>", methods=["GET"])
+def get_stock_details(stock_symbol):
+    try:
+        stock = yf.Ticker(stock_symbol)
+
+        # Try to get stock info
+        stock_info = stock.info
+        if not stock_info:
+            return Response(
+                json.dumps({"error": "No data found for this stock symbol"}), 
+                status=404, 
+                mimetype='application/json'
+            )
+
+        stock_details = {
+            "stockName": stock_info.get("shortName", "Unknown Stock"),
+            "currentPrice": stock_info.get("currentPrice", "N/A"),
+            "marketCap": stock_info.get("marketCap", "N/A"),
+            "sector": stock_info.get("sector", "N/A"),
+            "industry": stock_info.get("industry", "N/A"),
+            "volume": stock_info.get("volume", "N/A"),
+            "highToday": stock_info.get("dayHigh", "N/A"),
+            "lowToday": stock_info.get("dayLow", "N/A"),
+        }
+
+        return Response(
+            json.dumps(stock_details), 
+            status=200, 
+            mimetype='application/json'
+        )
+
+    except Exception as e:
+        # Log the error for debugging
+        print(f"Error: {e}")
+        error_response = {
+            "error": "Failed to fetch stock details",
+            "message": str(e)
+        }
+        return Response(
+            json.dumps(error_response), 
+            status=500, 
+            mimetype='application/json'
+        )
+
+@app.route("/news/<company_name>", methods=["GET"])
+def get_company_news(company_name):
+    """
+    Fetch recent news about a specific company using the NewsData.io API.
+    """
+    try:
+        # Base URL for NewsData.io
+        url = "https://newsdata.io/api/1/news"
+
+        # Query parameters
+        params = {
+            "apikey": NEWS_API_KEY,
+            "q": company_name,  # Search for the company name
+            "language": "en",  # Fetch only English articles
+        }
+
+        # Make a GET request to NewsData.io
+        response = requests.get(url, params=params)
+        response.raise_for_status()  # Raise exception for HTTP errors
+
+        # Parse the JSON response
+        news_data = response.json()
+
+        # Extract relevant information from articles
+        articles = news_data.get("results", [])
+        news_items = [
+            {
+                "title": article["title"],
+                "description": article["description"],
+                "link": article["link"],
+                "source": article["source_id"],
+                "published": article["pubDate"],
+            }
+            for article in articles
+        ]
+
+        return jsonify({"news": news_items}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/fetch-user-sims", methods=['OPTIONS', 'POST'])
+def fetch_user_sims():
+    try:
+        data = request.json
+        uid = data.get('uid')
+        sims = []
+        sims_ref = db.collection('users').document(uid).collection('sims')
+        docs = sims_ref.stream()
+        for doc in docs:
+            sims.append({
+                'id':doc.id,
+                **doc.to_dict(),
+            })
+
+        return jsonify({'message':'Sims fetched successfully', 'sims':sims})
+    except Exception as e:
+        return jsonify({'error':f'Error fetching sims from user Error: {str(e)}'})
+
+
+@app.route("/sambanova-investment-chat", methods=["POST"])
+def sambanova_investment_chat():
+    """
+    Interact with SambaNova's Chat API to provide investment-focused insights.
+    """
+    user_input = request.json.get("message")
+    if not user_input:
+        return jsonify({"error": "Message is required"}), 400
+
+    try:
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are an AI assistant specializing in investments and financial insights. "
+                    "You provide detailed and accurate information about stock market trends, "
+                    "company earnings, investment strategies, portfolio management, and other financial queries. "
+                    "You prioritize clarity, accuracy, and actionable advice."
+                )
+            },
+            {"role": "user", "content": user_input}
+        ]
+
+        # Use the SambaNova client to create a chat completion
+        response = sambanova_client.chat_completions_create(
+            model="Meta-Llama-3.1-8B-Instruct",
+            messages=messages,
+            temperature=0.5,
+            top_p=0.1,
+            max_tokens=300
+        )
+
+        # Extract the assistant's reply
+        reply = response["choices"][0]["message"]["content"]
+        return jsonify({"response": reply}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e), "message": "Failed to process the request"}), 500
+
+@app.route("/save-stock", methods=["POST"])
+def save_stock():
+    """
+    Save a stock to the user's portfolio in Firestore.
+    """
+    try:
+        data = request.json
+        uid = data.get("uid")
+        stock_symbol = data.get("symbol")
+        stock_name = data.get("name")
+
+        if not uid or not stock_symbol or not stock_name:
+            return jsonify({"error": "UID, stock symbol, and name are required"}), 400
+
+        user_doc_ref = db.collection("users").document(uid)
+        user_doc_ref.update({
+            "saved": firestore.ArrayUnion([{"symbol": stock_symbol, "name": stock_name}])
+        })
+
+        return jsonify({"message": f"Stock {stock_symbol} saved successfully"}), 200
+
+    except firestore.NotFound:
+        return jsonify({"error": "User document not found"}), 404
+    except Exception as e:
+        return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
+
 
 
 if __name__ == "__main__":
