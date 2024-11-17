@@ -107,6 +107,26 @@ def logout():
         response.headers["Access-Control-Allow-Credentials"] = "true"
         return response, 400
 
+@app.route("/stock-name/<stock_symbol>", methods=["GET"])
+def get_stock_name(stock_symbol):
+    """
+    Fetch and return the stock name for a given symbol using yfinance.
+    """
+    try:
+        # Use yfinance to fetch stock info
+        stock = yf.Ticker(stock_symbol)
+        stock_name = stock.info.get("shortName", "Unknown Stock")  # Get the stock name
+
+        if not stock_name:
+            return jsonify({"message": "Stock name not found"}), 404
+
+        return jsonify({"stockName": stock_name}), 200
+    except Exception as e:
+        return jsonify({
+            "message": "Error fetching stock name",
+            "error": str(e)
+        }), 500
+
 
 @app.route("/stock-graph/<stock_symbol>/<interval>", methods=["GET"])
 def stock_graph(stock_symbol, interval):
@@ -206,32 +226,33 @@ def autocomplete():
 
 @app.route("/top-gainers", methods=["GET"])
 def top_gainers():
-    try:
-        # Fetch the top gainers
-        gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
+    pass
+    # try:
+    #     # Fetch the top gainers
+    #     gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
 
-        # Prepare the data
-        top_gainers_list = []
-        for index, row in gainers.iterrows():
-            symbol = row['Symbol']
-            name = row['Name']
-            price = row['Price (Intraday)']
-            change = row['% Change']
-            high = row['Day\'s Range'].split(' - ')[1]
-            low = row['Day\'s Range'].split(' - ')[0]
+    #     # Prepare the data
+    #     top_gainers_list = []
+    #     for index, row in gainers.iterrows():
+    #         symbol = row['Symbol']
+    #         name = row['Name']
+    #         price = row['Price (Intraday)']
+    #         change = row['% Change']
+    #         high = row['Day\'s Range'].split(' - ')[1]
+    #         low = row['Day\'s Range'].split(' - ')[0]
 
-            top_gainers_list.append({
-                "symbol": symbol,
-                "name": name,
-                "price": price,
-                "percentChange": change,
-                "high": high,
-                "low": low
-            })
+    #         top_gainers_list.append({
+    #             "symbol": symbol,
+    #             "name": name,
+    #             "price": price,
+    #             "percentChange": change,
+    #             "high": high,
+    #             "low": low
+    #         })
 
-        return jsonify(top_gainers_list)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    #     return jsonify(top_gainers_list)
+    # except Exception as e:
+    #     return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

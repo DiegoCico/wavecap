@@ -33,6 +33,32 @@ function StockGraph({ stockSymbol }) {
 
   // Create a ref to store the chart instance and clean up
   const chartRef = useRef(null);
+  const [stockName, setStockName] = useState("");
+
+  useEffect(() => {
+    const fetchStockName = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/stock-name/${stockSymbol}`);
+        const data = await response.json();
+  
+        if (response.ok) {
+          setStockName(data.stockName);
+        } else {
+          console.error("Error fetching stock name:", data.message);
+          setStockName("Unknown Stock");
+        }
+      } catch (err) {
+        console.error("Error fetching stock name:", err);
+        setStockName("Unknown Stock");
+      }
+    };
+  
+    if (stockSymbol) {
+      fetchStockName();
+    }
+  }, [stockSymbol]);
+  
+
 
   // Fetch stock data when interval or stockSymbol changes
   useEffect(() => {
@@ -46,6 +72,15 @@ function StockGraph({ stockSymbol }) {
     const chartInstance = chartRef.current?.chartInstance;
     if (chartInstance) {
       chartInstance.destroy();
+    }
+  
+    // Add a small delay when switching to candlestick chart type
+    if (chartType === "candle") {
+      setTimeout(() => {
+        fetchChartData();
+      }, 400); // Delay of 200ms
+    } else {
+      fetchChartData();
     }
   }, [chartType]);
 
@@ -130,8 +165,23 @@ function StockGraph({ stockSymbol }) {
     responsive: true,
     plugins: {
       tooltip: {
-        mode: "index",
+        enabled: true,
+        mode: "nearest",
         intersect: false,
+        callbacks: {
+          label: (tooltipItem) => {
+            if (chartType === "candle") {
+              const { o, h, l, c } = tooltipItem.raw; // Extract OHLC values
+              return [
+                `Open: ${o}`,
+                `High: ${h}`,
+                `Low: ${l}`,
+                `Close: ${c}`,
+              ]; // Display OHLC values
+            }
+            return `Price: ${tooltipItem.raw}`; // Default for line chart
+          },
+        },
       },
       legend: {
         display: false, // Hide the legend
@@ -173,13 +223,14 @@ function StockGraph({ stockSymbol }) {
   };
   
   
+  
 
   return (
     <div className="stock-graph-container">
       {/* Header */}
       <header className="stock-graph-header">
-        <h1>Stock Graph: {stockSymbol}</h1>
-        {error && <p>{error}</p>}
+      <h1>{`${stockName} (${stockSymbol})`}</h1>
+      {error && <p>{error}</p>}
         <div className="stock-graph-interval-type-buttons">
           {/* Interval Buttons */}
           <div className="stock-graph-interval-buttons">
