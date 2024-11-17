@@ -1,4 +1,4 @@
-# Stock Portfolio Management System
+# WaveCap
 
 ## Overview
 

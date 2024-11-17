@@ -32,7 +32,7 @@ finhub_key = os.getenv("FINHUB_API")
 if not finhub_key:
     raise ValueError("FINHUB environment variable not set.")
 
-NEWS_API_KEY = os.getenv("NEWSDATA_API")
+NEWSDATA_API_KEY = os.getenv("NEWSDATA_API")
 
 SAMBANOVA_API_URL = "https://api.sambanova.ai/v1/chat/completions"
 SAMBANOVA_API_KEY = os.getenv("SAMVANOVA_API")
@@ -244,76 +244,99 @@ def autocomplete():
 @app.route("/top-gainers", methods=["GET"])
 def top_gainers():
     try:
-        # Fetch the top gainers
-        gainers = si.get_day_gainers()  # Get the data
-        if gainers.empty:
-            return jsonify({"message": "No gainers available"}), 404
-        print("Fetched gainers:", gainers.head(3))  # Debug: Print the first few rows
-
-        # Prepare the data
-        top_gainers_list = []
-        for index, row in gainers.head(3).iterrows():
-            symbol = row['Symbol']
-            name = row['Name']
-            price = row['Price (Intraday)']
-            change = row['% Change']
-            day_range = row['Day\'s Range']
-
-            # Validate and split day's range
-            if ' - ' in day_range:
-                low, high = day_range.split(' - ')
-            else:
-                low, high = None, None
-
-            top_gainers_list.append({
-                "symbol": symbol,
-                "name": name,
-                "price": price,
-                "percentChange": change,
-                "high": high,
-                "low": low
-            })
-
-        return jsonify(top_gainers_list)
+        top_gainers_list = [
+            {
+                "symbol": "AAPL",
+                "name": "Apple Inc.",
+                "price": 174.58,
+                "percentChange": "+3.25%",
+                "high": 175.20,
+                "low": 172.50,
+            },
+            {
+                "symbol": "MSFT",
+                "name": "Microsoft Corp.",
+                "price": 312.87,
+                "percentChange": "+2.87%",
+                "high": 315.00,
+                "low": 309.50,
+            },
+            {
+                "symbol": "TSLA",
+                "name": "Tesla Inc.",
+                "price": 227.48,
+                "percentChange": "+5.42%",
+                "high": 230.00,
+                "low": 223.90,
+            },
+        ]
+        print(top_gainers_list)  # Log the top gainers list to check if it's being created correctly
+        return jsonify({"top_gainers": top_gainers_list}), 200
+        
     except Exception as e:
-        print("Error in /top-gainers:", e)  # Debug: Log the error
-        return jsonify({"error": str(e)}), 500
-
+        return jsonify({"error": f"Failed to fetch top gainers: {str(e)}"}), 500
 
 @app.route("/stock-name/<stock_symbol>", methods=["GET"])
 def get_stock_details(stock_symbol):
+    """
+    Fetch detailed stock metrics using SambaNova AI API for a given stock symbol.
+    Generates a concise summary using AI.
+    """
     try:
-        stock = yf.Ticker(stock_symbol)
+        # Construct a structured prompt for SambaNova
+        prompt = (
+            f"Provide a concise summary of the stock {stock_symbol}. Include its sector, "
+            f"industry, market capitalization, and any relevant earnings or financial metrics."
+        )
 
-        # Fetching historical data for additional metrics
-        hist = stock.history(period="1d")  # Get today's data
-        if hist.empty:
-            return jsonify({"error": "No historical data available for this stock"}), 404
+        # Request payload
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are an AI assistant specializing in stock market analysis. "
+                    "Provide concise and factual summaries of stock metrics."
+                )
+            },
+            {"role": "user", "content": prompt},
+        ]
 
-        # Fetch key metrics from summary_detail
-        summary_detail = stock.get_info()
-        
-        stock_details = {
-            "stockName": summary_detail.get("shortName", "Unknown Stock"),
-            "currentPrice": hist["Close"][-1] if not hist.empty else "N/A",  # Use the latest close price
-            "marketCap": summary_detail.get("marketCap", "N/A"),
-            "sector": summary_detail.get("sector", "N/A"),
-            "industry": summary_detail.get("industry", "N/A"),
-            "volume": hist["Volume"][-1] if not hist.empty else "N/A",
-            "highToday": hist["High"][-1] if not hist.empty else "N/A",
-            "lowToday": hist["Low"][-1] if not hist.empty else "N/A",
-            "dividendYield": summary_detail.get("dividendYield", "N/A"),
-            "yearHigh": summary_detail.get("fiftyTwoWeekHigh", "N/A"),
-            "yearLow": summary_detail.get("fiftyTwoWeekLow", "N/A"),
-            "eps": summary_detail.get("trailingEps", "N/A"),
-        }
+        # Make the request to SambaNova's API
+        response = requests.post(
+            SAMBANOVA_API_URL,
+            headers={
+                "Authorization": f"Bearer {SAMBANOVA_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "Meta-Llama-3.1-8B-Instruct",
+                "messages": messages,
+                "temperature": 0.5,
+                "top_p": 0.9,
+                "max_tokens": 300,
+            },
+        )
 
-        return jsonify(stock_details), 200
+        if response.status_code != 200:
+            return jsonify({
+                "error": "Failed to fetch stock details from SambaNova",
+                "details": response.json()
+            }), response.status_code
+
+        # Extract the AI-generated response
+        ai_reply = response.json()["choices"][0]["message"]["content"]
+
+        # Return the AI-generated summary
+        return jsonify({
+            "stockName": stock_symbol,
+            "summary": ai_reply,
+        }), 200
 
     except Exception as e:
-        return jsonify({"error": "Failed to fetch stock details", "message": str(e)}), 500
-
-
+        return jsonify({
+            "error": str(e),
+            "message": "Failed to process stock details using SambaNova."
+        }), 500
 
 
 @app.route("/news/<company_name>", methods=["GET"])
@@ -327,7 +350,7 @@ def get_company_news(company_name):
 
         # Query parameters
         params = {
-            "apikey": NEWS_API_KEY,
+            "apikey": NEWSDATA_API_KEY,
             "q": company_name,  # Search for the company name
             "language": "en",  # Fetch only English articles
         }
@@ -661,15 +684,8 @@ def place_order():
     except Exception as e:
         return jsonify({'error': f'Error placing order: {str(e)}'}), 500
 
-
-
-
-
 @app.route("/news-sentiment/<company_name>", methods=["GET"])
 def get_news_sentiment(company_name):
-    """
-    Fetch recent news articles about a company and perform sentiment analysis.
-    """
     try:
         if not NEWS_API_KEY:
             return jsonify({"error": "News API key not configured."}), 500
@@ -682,7 +698,7 @@ def get_news_sentiment(company_name):
             "sortBy": "publishedAt",
         }
 
-        # Make API request
+        # Fetch news articles
         response = requests.get(url, params=params)
         if response.status_code != 200:
             return jsonify({
@@ -694,13 +710,19 @@ def get_news_sentiment(company_name):
         if not articles:
             return jsonify({"error": "No articles found."}), 404
 
-        # Analyze sentiment for each article
+        # Sentiment analysis
         sentiment_results = []
         for article in articles:
             title = article.get("title", "")
             description = article.get("description", "")
             content = f"{title}. {description}"
-            sentiment_score = analyzer.polarity_scores(content)
+            print(f"Analyzing content: {content}")  # Debug log
+
+            try:
+                sentiment_score = analyzer.polarity_scores(content)
+            except Exception as e:
+                print(f"Sentiment analysis error: {e}")
+                sentiment_score = {"compound": 0}  # Default to neutral sentiment
 
             sentiment_results.append({
                 "date": article.get("publishedAt"),
@@ -709,7 +731,7 @@ def get_news_sentiment(company_name):
                 "sentiment": sentiment_score,
             })
 
-        # Format data for the chart
+        # Extract labels and scores
         labels = [item["date"] for item in sentiment_results]
         scores = [item["sentiment"]["compound"] for item in sentiment_results]
 
@@ -717,7 +739,6 @@ def get_news_sentiment(company_name):
 
     except Exception as e:
         return jsonify({"error": str(e), "message": "Failed to fetch sentiment data."}), 500
-   
 
 @app.route('/is-saved', methods=['POST'])
 def is_saved():
@@ -730,9 +751,11 @@ def is_saved():
         portfolio_ref = db.collection('users').document(uid).collection('portfolio')
         query = portfolio_ref.where('symbol', '==', data.get('symbol')).stream()
         for doc in query:
-            return jsonify({'message':'Found a match', 'isSaved':})
+            return jsonify({'message':'Found a match', 'isSaved':True})
+        
+        return jsonify({'message':'Did not find a match', 'isSaved':False})
     except Exception as e:
-        pass
+        return jsonify({'error':f'Error occured {str(e)}'})
 
 
 

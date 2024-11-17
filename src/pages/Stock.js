@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StockGraph from "../components/StockGraph";
 import News from "../components/News";
-import "../css/Stock.css"; // Assuming the CSS is saved in Stock.css
+import "../css/Stock.css";
 
 const Stock = ({ stockSymbol }) => {
     const { uid } = useParams(); // Extract uid from the URL
@@ -13,42 +13,6 @@ const Stock = ({ stockSymbol }) => {
 
     const imagePath = `${process.env.PUBLIC_URL}/ticker_icons/${stockSymbol}.png`;
 
-    // Check if the stock is saved whenever the stockSymbol changes
-    useEffect(() => {
-        const checkIfSaved = async () => {
-            if (!uid) return;
-
-            try {
-                const response = await fetch(
-                    `http://127.0.0.1:5000/is-saved`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            uid,
-                            symbol: stockSymbol,
-                        }),
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error(`Error checking saved status: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                setIsSaved(data.isSaved); // Backend should return { isSaved: true/false }
-            } catch (err) {
-                console.error("Error fetching saved status:", err);
-                setIsSaved(false); // Assume not saved if an error occurs
-            }
-        };
-
-        checkIfSaved();
-    }, [stockSymbol, uid]);
-
-    // Fetch stock details
     useEffect(() => {
         const fetchStockDetails = async () => {
             setIsLoading(true);
@@ -58,7 +22,7 @@ const Stock = ({ stockSymbol }) => {
                     throw new Error(`Server responded with status ${response.status}: ${response.statusText}`);
                 }
                 const data = await response.json();
-                setStockDetails(data);
+                setStockDetails(data); // Set stock details with summary
                 console.log(data);
             } catch (err) {
                 setError(err.message);
@@ -122,54 +86,10 @@ const Stock = ({ stockSymbol }) => {
                     <i className={`fa-solid fa-heart ${isSaved ? "heart-saved" : ""}`}></i>
                 </button>
                 <StockGraph stockSymbol={stockSymbol} />
-            
-
-            {/* Stock Details */}
-            <div className="stock-details">
-                {isLoading ? (
-                    <p>Loading stock details...</p>
-                ) : error ? (
-                    <p style={{ color: "red" }}>{error}</p>
-                ) : stockDetails ? (
-                    <table className="metrics-table">
-                        <tbody>
-                            {/* Centered First Row */}
-                            <tr>
-                                <th colSpan="5" style={{ textAlign: "center" }}>Symbol</th>
-                                <td colSpan="5" style={{ textAlign: "center" }}>{stockSymbol}</td>
-                            </tr>
-                            {/* Second Row */}
-                            <tr>
-                                <th>Market Cap</th>
-                                <td>{stockDetails.marketCap || "N/A"}</td>
-                                <th>Sector</th>
-                                <td>{stockDetails.sector || "N/A"}</td>
-                                <th>Industry</th>
-                                <td>{stockDetails.industry || "N/A"}</td>
-                                <th>EPS</th>
-                                <td>{stockDetails.eps || "N/A"}</td>
-                                <th>Volume</th>
-                                <td>{stockDetails.volume || "N/A"}</td>
-                            </tr>
-                            {/* Third Row */}
-                            <tr>
-                                <th>Today's High</th>
-                                <td>{stockDetails.highToday || "N/A"}</td>
-                                <th>Today's Low</th>
-                                <td>{stockDetails.lowToday || "N/A"}</td>
-                                <th>Dividend Yield</th>
-                                <td>{stockDetails.dividendYield || "N/A"}</td>
-                                <th>52-Week High</th>
-                                <td>{stockDetails.yearHigh || "N/A"}</td>
-                                <th>52-Week Low</th>
-                                <td>{stockDetails.yearLow || "N/A"}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No stock details available.</p>
+                {/* Display the stock summary below the graph */}
+                {!isLoading && stockDetails?.summary && (
+                    <p className="stock-summary">{stockDetails.summary}</p>
                 )}
-            </div>
             </div>
 
             {/* News Section */}

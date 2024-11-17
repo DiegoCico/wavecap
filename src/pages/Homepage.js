@@ -15,6 +15,7 @@ const Homepage = () => {
     const [topGainers, setTopGainers] = useState([]); // Support for multiple gainers
     const { uid } = useParams();
     const inputRef = useRef(null);
+    const imagePath = `${process.env.PUBLIC_URL}/ticker_icons/${stockSymbol}.png`
 
     useEffect(() => {
         fetchPortfolio();
@@ -39,10 +40,16 @@ const Homepage = () => {
     // Fetch top gainers
     const fetchTopGainers = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:5000/top-gainers");
+            const response = await fetch("http://127.0.0.1:5000/top-gainers", {
+                method:'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             if (response.ok) {
                 const data = await response.json();
-                setTopGainers(data); // Set all top gainers
+                console.log(data.top_gainers)
+                // setTopGainers(data.list); // Set all top gainers
             } else {
                 console.error("Failed to fetch top gainers");
             }
@@ -111,6 +118,33 @@ const Homepage = () => {
         setStockSymbol(""); // Clear any selected stock
     };
 
+    useEffect(() => {
+        // Mock static data for top gainers
+        const staticData = [
+            {
+                symbol: "AAPL",
+                imagePath: `${process.env.PUBLIC_URL}/ticker_icons/AAPL.png`,
+                high: 250,
+                low: 130,
+            },
+            {
+                symbol: "AMZN",
+                imagePath: `${process.env.PUBLIC_URL}/ticker_icons/AMZN.png`,
+                high: 350,
+                low: 280,
+            },
+            {
+                symbol: "GOOGL",
+                imagePath: `${process.env.PUBLIC_URL}/ticker_icons/GOOGL.png`,
+                high: 2900,
+                low: 2700,
+            },
+        ];
+        setTopGainers(staticData);
+    }, []);
+
+
+console.log(topGainers)
     return (
         <div className="homepage">
             <div className="home-sidenav">
@@ -181,27 +215,28 @@ const Homepage = () => {
                 </div>
                 <div className="movers-cont">
                     <div className="movers-header">
-                        <p className="movers-title">Top Gainers</p>
-                        <p className="movers-date">As of today</p>
+                        <p>Top Movers</p>
                     </div>
-                    <div className="movers-body">
-                        {topGainers.length > 0 ? (
-                            topGainers.map((gainer, index) => (
-                                <div key={index} className="gainer-item">
-                                    <p>
-                                        <strong>{gainer.symbol}</strong> - {gainer.name}
-                                    </p>
-                                    <p>High: {gainer.high} | Low: {gainer.low}</p>
-                                    <p style={{ color: "green" }}>
-                                        Change: {gainer.percentChange}%
-                                    </p>
+                    {topGainers.length > 0 ? (
+                        topGainers.map((gainer, index) => (
+                            <div key={index} className="gainer-item">
+                                <div className="gainer-content">
+                                    {/* Stock Logo */}
+                                    {/* Stock Information */}
+                                    <div className="gainer-info">
+                                        <p className="gainer-symbol">{gainer.symbol}</p>
+                                        <div className="gainer-high-low">
+                                            <p>High: {gainer.high}</p>
+                                            <p>Low: {gainer.low}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            ))
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                    </div>
-                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+            </div>
                 <div className="signout-cont">
                     <button onClick={handleOpenDash}>
                         <i className="fa-solid fa-right-from-bracket"></i>

@@ -21,7 +21,6 @@ html, body {
     display: flex; /* Allows flexible layout */
     flex-direction: column; /* Stack children vertically */
     box-sizing: border-box; /* Ensure padding doesn't affect height */
-    padding: 1rem; /* Add padding for content inside */
 }
 
 /* Logo container */
@@ -42,7 +41,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0.6rem;
+    margin: 1rem;
 }
 
 .search-box {
@@ -72,7 +71,7 @@ html, body {
 .custom-line {
     height: 1px;
     background-color: #656565;
-    margin: 1rem 0.6rem;
+    margin: 1rem;
 }
 
 /* Portfolio and Movers containers */
@@ -263,6 +262,65 @@ html, body {
     color: #A1A1A1;
 }
 
+/* Top Gainers Container */
+.movers-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #232323;
+    border-radius: 10px;
+    max-height: 300px; /* Set the max height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #2b2b2b; /* For Firefox */
+}
+
+
+/* Individual Gainer Item */
+.gainer-item {
+    display: flex;
+    align-items: center;
+    background-color: #2b2b2b;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Gainer Logo */
+.gainer-logo {
+    margin-right: 1rem;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Gainer Info */
+.gainer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.gainer-symbol {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.gainer-high-low {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+.gainer-high-low p {
+    margin: 0;
+}
+
+
 /* Responsive Design with Media Queries */
 @media (max-width: 1024px) {
     .homepage {
@@ -362,6 +420,24 @@ html, body {
         font-size: 0.8rem;
         height: 40px; /* Adjust button height */
     }
+}
+
+/* Scrollbar Styling for Webkit (Chrome, Edge, etc.) */
+.movers-cont::-webkit-scrollbar {
+    width: 8px;
+}
+
+.movers-cont::-webkit-scrollbar-track {
+    background: #2b2b2b; /* Scrollbar track background */
+}
+
+.movers-cont::-webkit-scrollbar-thumb {
+    background-color: #888; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+.movers-cont::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker on hover */
 }
 
 .suggestions-list {
