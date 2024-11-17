@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/News.css";
+import "../css/News2.css";
 
 const News = ({ companyName }) => {
     const [newsData, setNewsData] = useState([]);
@@ -25,32 +25,40 @@ const News = ({ companyName }) => {
     }, [companyName]);
 
     return (
-        <div className="news-container">
-            <h4>News About {companyName}</h4>
-            {isLoading ? (
-                <div className="status-message">Fetching latest news...</div>
-            ) : error ? (
-                <div className="status-message error">{error}</div>
-            ) : newsData.length ? (
-                newsData.map((item, index) => (
-                    <div key={index} className="news-item">
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="news-title">
-                            {item.title}
-                        </a>
-                        <p className="news-description">
-                            {item.description || "No description provided."}
-                        </p>
-                        <small className="news-meta">
-                            <span>{item.source || "Unknown source"}</span> •{" "}
-                            {new Date(item.published).toLocaleDateString()}
-                        </small>
-                    </div>
-                ))
-            ) : (
-                <div className="status-message">No news found.</div>
-            )}
+        <div>
+            <h4 className="news-heading">News About {companyName}</h4>
+            <div className="news-container">
+                {isLoading ? (
+                    <div className="status-message">Fetching latest news...</div>
+                ) : error ? (
+                    <div className="status-message error">{error}</div>
+                ) : newsData.length ? (
+                    newsData.map((item, index) => (
+                        <div key={index} className="news-item">
+                            <a 
+                                href={item.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="news-title"
+                            >
+                                {item.title}
+                            </a>
+                            <p className="news-description">
+                                {item.description || "No description provided."}
+                            </p>
+                            <small className="news-meta">
+                                <span>{item.source || "Unknown source"}</span> •{" "}
+                                {new Date(item.published).toLocaleDateString()}
+                            </small>
+                        </div>
+                    ))
+                ) : (
+                    <div className="status-message">No news found.</div>
+                )}
+            </div>
         </div>
     );
+    
 };
 
 export default News;

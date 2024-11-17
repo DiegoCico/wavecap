@@ -1,0 +1,91 @@
+/* Container for all news items */
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between news cards */
+    padding: 20px; /* Padding around the container */
+    margin-top: 20px; /* Add space below the heading */
+}
+
+/* Section Title */
+.news-heading {
+    font-size: 2rem; /* Larger font size for heading */
+    font-weight: bold;
+    color: white; /* White text */
+    text-align: left; /* Align to the left */
+    margin: 1rem; /* Space below and padding for alignment */
+}
+
+/* Individual news item styling */
+.news-item {
+    background-color: #2b2b2b; /* Dark background */
+    color: white; /* White text */
+    padding: 20px; /* Inner padding */
+    border-radius: 10px; /* Rounded corners */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Spread content evenly */
+    height: 300px; /* Fixed height for uniformity */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    overflow: hidden; /* Prevent overflow of content */
+}
+
+/* Title of the news */
+.news-title {
+    font-size: 1.2rem; /* Slightly larger font for the title */
+    font-weight: bold;
+    color: white; /* White text */
+    text-align: center;
+    margin-bottom: 10px; /* Space below the title */
+    overflow: hidden; /* Prevent text overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long titles */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Add hover effect for news title */
+.news-title:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Description section */
+.news-description {
+    font-size: 1rem; /* Normal font size for description */
+    line-height: 1.4; /* Slightly increased line height for readability */
+    color: #ccc; /* Light gray for description */
+    margin-bottom: 10px; /* Space below the description */
+    overflow: hidden; /* Prevent overflowing */
+    display: -webkit-box; /* Enable truncation with ellipsis */
+    -webkit-line-clamp: 5; /* Show up to 5 lines of text */
+    -webkit-box-orient: vertical; /* Vertical orientation for ellipsis */
+}
+
+/* Meta information (source, date, etc.) */
+.news-meta {
+    font-size: 0.9rem; /* Smaller font size */
+    color: #888; /* Gray text for meta information */
+    text-align: center;
+    margin-top: auto; /* Push to the bottom */
+}
+
+/* Hover effect for news items */
+.news-item:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .news-item {
+        height: 250px; /* Reduce height for smaller screens */
+    }
+
+    .news-title {
+        font-size: 1rem; /* Reduce title size */
+    }
+
+    .news-description {
+        -webkit-line-clamp: 4; /* Show fewer lines for smaller screens */
+    }
+}

@@ -527,36 +527,6 @@ def save_stock():
         return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
 
 
-def set_starting_balance(starting_balance):
-    try:
-        # Headers for authentication
-        headers = {
-            'APCA-API-KEY-ID': os.getenv("ALPACA_API_KEY"),
-            'APCA-API-SECRET-KEY': os.getenv("ALPACA_SECRET_KEY")
-        }
-
-        # Fetch current account details
-        account_response = requests.get(f'{ALPACA_BASE_URL}/account', headers=headers)
-        account_response.raise_for_status()
-        account_data = account_response.json()
-        print("Current account details:", account_data)
-
-        # Update cash balance (paper trading only)
-        patch_response = requests.patch(
-            f'{ALPACA_BASE_URL}/account',
-            headers=headers,
-            json={'cash': starting_balance}
-        )
-        patch_response.raise_for_status()
-        updated_account = patch_response.json()
-        print("Updated account details:", updated_account)
-
-        return updated_account
-
-    except requests.exceptions.RequestException as e:
-        print("Error updating account balance:", e)
-        return None
-
 
 @app.route("/create-new-simulation", methods=['OPTIONS', 'POST'])
 def new_simulation():
@@ -749,6 +719,20 @@ def get_news_sentiment(company_name):
         return jsonify({"error": str(e), "message": "Failed to fetch sentiment data."}), 500
    
 
+@app.route('/is-saved', methods=['POST'])
+def is_saved():
+    try:
+        data = request.json
+        uid = data.get('uid')
+        if not uid:
+            return jsonify({'error':'Missing UserID'}), 400
+
+        portfolio_ref = db.collection('users').document(uid).collection('portfolio')
+        query = portfolio_ref.where('symbol', '==', data.get('symbol')).stream()
+        for doc in query:
+            return jsonify({'message':'Found a match', 'isSaved':})
+    except Exception as e:
+        pass
 
 
 
