@@ -1,12 +1,10 @@
-from flask import jsonify, request
+from flask import jsonify, request, session, make_response
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
 import os
 from config import app
 import yfinance as yf
-import plotly.graph_objs as go
-from plotly.utils import PlotlyJSONEncoder
 import json
 
 # Load environment variables
@@ -64,16 +62,41 @@ def login():
 
     try:
         user = auth.get_user_by_email(email)
+        session["uid"] = user.uid
+        print('session uid', session.get("uid"))
         return jsonify({"message": "Login successful!", "uid": user.uid}), 200
     except firebase_admin.auth.UserNotFoundError:
         return jsonify({"message": "User not found."}), 404
     except Exception as e:
         return jsonify({"message": "Login failed.", "error": str(e)}), 500
 
+@app.route('/logout', methods=['OPTIONS', 'POST'])
+def logout():
+    if request.method == 'OPTIONS':  # Handle preflight request
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        return response, 200
+
+    # Handle the actual POST request
+    if 'uid' in session:
+        session.clear()
+        response = jsonify({"message": "User logged out successfully"})
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response, 200
+    else:
+        response = jsonify({"error": "No user logged in"})
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response, 400
+
 @app.route("/stock-graph/<stock_symbol>/<interval>", methods=["GET"])
 def stock_graph(stock_symbol, interval):
     """
-    Fetch stock data for a given symbol and interval using yfinance, generate an interactive graph, and send it to React.
+    Fetch stock data for a given symbol and interval using yfinance, and send it as JSON to React.
     """
     try:
         # Map intervals to yfinance's valid periods and intervals
@@ -102,32 +125,17 @@ def stock_graph(stock_symbol, interval):
                 "interval": interval
             }), 400
 
-        # Create an interactive graph using Plotly
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=hist.index,
-            y=hist['Close'],
-            mode='lines',
-            name=f"{stock_symbol} ({interval})"
-        ))
+        # Extract data for Chart.js
+        labels = hist.index.strftime('%Y-%m-%d').tolist()  # Convert dates to strings
+        data = hist['Close'].tolist()  # Closing prices
 
-        fig.update_layout(
-            title=f"Stock Prices for {stock_symbol} ({interval})",
-            xaxis_title="Date",
-            yaxis_title="Price",
-            template="plotly_dark"
-        )
-
-        # Convert the figure to JSON for React
-        graph_json = json.dumps(fig, cls=PlotlyJSONEncoder)
-        return jsonify({"graph": graph_json})
+        return jsonify({"labels": labels, "data": data}), 200
 
     except Exception as e:
         return jsonify({
-            "message": "Error generating stock graph.",
+            "message": "Error generating stock data.",
             "error": str(e)
         }), 500
-
 
 
 if __name__ == "__main__":

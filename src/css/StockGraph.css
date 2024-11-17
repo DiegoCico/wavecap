@@ -1,43 +1,62 @@
-/* Container Styles */
+
+  
+  /* Main container with black background */
 .stock-graph-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  /* Title Styles */
-  .stock-graph-title {
-    color: green;
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
-  }
-  
-  /* Graph Wrapper */
-  .stock-graph-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black; /* Black background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Header */
+.stock-graph-header h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Row for interval buttons */
+.stock-graph-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.stock-graph-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.stock-graph-button.active {
+  background-color: green;
+  color: white;
+}
+
+.stock-graph-wrapper {
+  width: 100%;
+}
+
+.stock-graph-container {
     position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: auto;
+    color: white;
+  }
+  
+  .stock-graph-header h1 {
+    text-align: center;
     margin-bottom: 20px;
   }
   
-  /* Graph Image */
-  .stock-graph-image {
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid green;
-  }
-  
-  /* Button Container */
-  .stock-graph-buttons {
+  .stock-graph-interval-buttons {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -45,41 +64,33 @@
     gap: 10px;
   }
   
-  /* Individual Button Styles */
   .stock-graph-button {
-    background-color: green;
-    color: white;
+    background: none;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    color: white;
     font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .stock-graph-button.active {
-    background-color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
   }
   
   .stock-graph-button:hover {
-    background-color: #ff4c4c;
+    color: lightgray;
   }
   
-  /* Fetch Graph Button */
-  .fetch-graph-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+  .stock-graph-button.selected {
+    color: #00ff00; /* Highlight selected button */
     font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
   }
   
-  .fetch-graph-button:hover {
-    background-color: #ff4c4c;
+  .stock-graph-wrapper {
+    margin-top: 50px;
+  }
+  
+  .stock-graph-type-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
   }
   

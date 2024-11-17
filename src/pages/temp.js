@@ -12,11 +12,11 @@ function Temp() {
           type="text"
           placeholder="Enter stock symbol (e.g., AAPL)"
           value={stockSymbol}
-          onChange={(e) => setStockSymbol(e.target.value)}
+          onChange={(e) => setStockSymbol(e.target.value)} // Update stockSymbol state
           className="stock-input"
         />
       </div>
-      <StockGraph stockSymbol={stockSymbol} />
+      <StockGraph stockSymbol={stockSymbol} setStockSymbol={setStockSymbol} />
     </div>
   );
 }

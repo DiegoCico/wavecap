@@ -76,7 +76,7 @@ form {
 }
 
 /* Buttons */
-button {
+.auth-form-container button {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -87,21 +87,21 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"] {
+.auth-form-container button[type="submit"] {
   background-color: #2ecc71;
   color: #ffffff;
 }
 
-button[type="submit"]:hover {
+.auth-form-container button[type="submit"]:hover {
   background-color: #27ae60;
 }
 
-button:not([type="submit"]) {
+.auth-form-container button:not([type="submit"]) {
   background-color: #e74c3c;
   color: #ffffff;
 }
 
-button:not([type="submit"]):hover {
+.auth-form-container button:not([type="submit"]):hover {
   background-color: #c0392b;
 }
 
