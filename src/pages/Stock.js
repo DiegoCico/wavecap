@@ -23,7 +23,7 @@ const Stock = ({ stockSymbol }) => {
                 }
                 const data = await response.json();
                 setStockDetails(data);
-                console.log(data)
+                console.log(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -36,12 +36,16 @@ const Stock = ({ stockSymbol }) => {
 
     const handleSaveStock = async () => {
         if (!uid) {
-            alert("User ID is required to save stocks.");
+            alert("User ID is required to manage stocks.");
             return;
         }
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/save-stock", {
+            const url = isSaved 
+                ? "http://127.0.0.1:5000/remove-stock" 
+                : "http://127.0.0.1:5000/save-stock";
+
+            const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -55,14 +59,13 @@ const Stock = ({ stockSymbol }) => {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error || "Failed to save stock.");
+                throw new Error(errorData.error || `Failed to ${isSaved ? "remove" : "save"} stock.`);
             }
 
-            setIsSaved(true);
-            alert(`${stockSymbol} saved successfully to your portfolio.`);
+            setIsSaved(!isSaved);
         } catch (error) {
-            console.error("Error saving stock:", error);
-            alert("Failed to save the stock. Please try again.");
+            console.error("Error managing stock:", error);
+            alert(`Failed to ${isSaved ? "remove" : "save"} the stock. Please try again.`);
         }
     };
 
@@ -78,9 +81,9 @@ const Stock = ({ stockSymbol }) => {
                 <button 
                     className={`save-button ${isSaved ? "saved" : ""}`}
                     onClick={handleSaveStock}
-                    title="Save to Portfolio"
+                    title={isSaved ? "Remove from Portfolio" : "Save to Portfolio"}
                 >
-                    <i className="fa-solid fa-heart"></i>
+                    <i className={`fa-solid fa-heart ${isSaved ? "heart-saved" : ""}`}></i>
                 </button>
                 <StockGraph stockSymbol={stockSymbol} />
             

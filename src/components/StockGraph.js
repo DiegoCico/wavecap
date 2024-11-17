@@ -263,6 +263,13 @@ const toggleSentiment = () => {
         {error && <p>{error}</p>}
         <div className="stock-graph-interval-type-buttons">
           {/* Interval Buttons */}
+          {/* Sentiment Toggle Button */}
+          <div className="sentiment-toggle-container">
+            <button onClick={toggleSentiment} className="toggle-sentiment">
+              <i className="fa-solid fa-eye"></i>{" "}
+              {showSentiment ? "Sentiment" : "Prices"}
+            </button>
+          </div>
           <div className="stock-graph-interval-buttons">
             <button
               onClick={() => setInterval("days")}
@@ -305,14 +312,6 @@ const toggleSentiment = () => {
                 <i className="fa-solid fa-grip-lines-vertical selected"></i>
               )}
             </div>
-          </div>
-  
-          {/* Sentiment Toggle Button */}
-          <div className="sentiment-toggle-container">
-            <button onClick={toggleSentiment} className="toggle-sentiment">
-              <i className="fa-solid fa-eye"></i>{" "}
-              {showSentiment ? "Show Prices" : "Show Sentiment"}
-            </button>
           </div>
         </div>
       </header>

@@ -10,7 +10,14 @@ import json
 from yahoo_fin import stock_info as si
 from sambanova_client import sambanova_client
 from datetime import datetime
-from news import getSentiment
+import alpaca_trade_api as tradeapi
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+ALPACA_BASE_URL = 'https://paper-api.alpaca.markets/v2'
+# alpaca = tradeapi.REST(os.getenv('ALPACA_API_KEY'), os.getenv('ALPACA_SECRET_KEY'), ALPACA_BASE_URL)
+
+analyzer = SentimentIntensityAnalyzer()
+
 
 # Load environment variables
 load_dotenv()
@@ -400,6 +407,33 @@ def sambanova_investment_chat():
     except Exception as e:
         return jsonify({"error": str(e), "message": "Failed to process the request"}), 500
 
+@app.route("/remove-stock", methods=["POST"])
+def remove_stock():
+    """
+    Remove a stock from the user's portfolio in Firestore.
+    """
+    try:
+        data = request.json
+        uid = data.get("uid")
+        stock_symbol = data.get("symbol")
+        stock_name = data.get("name")
+
+        if not uid or not stock_symbol or not stock_name:
+            return jsonify({"error": "UID, stock symbol, and name are required"}), 400
+
+        user_doc_ref = db.collection("users").document(uid)
+        user_doc_ref.update({
+            "saved": firestore.ArrayRemove([{"symbol": stock_symbol, "name": stock_name}])
+        })
+
+        return jsonify({"message": f"Stock {stock_symbol} removed successfully"}), 200
+
+    except firestore.NotFound:
+        return jsonify({"error": "User document not found"}), 404
+    except Exception as e:
+        return jsonify({"error": f"Failed to remove stock: {str(e)}"}), 500
+
+
 @app.route("/save-stock", methods=["POST"])
 def save_stock():
     """
@@ -426,7 +460,35 @@ def save_stock():
     except Exception as e:
         return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
 
-from datetime import datetime
+def set_starting_balance(starting_balance):
+    try:
+        # Headers for authentication
+        headers = {
+            'APCA-API-KEY-ID': os.getenv("ALPACA_API_KEY"),
+            'APCA-API-SECRET-KEY': os.getenv("ALPACA_SECRET_KEY")
+        }
+
+        # Fetch current account details
+        account_response = requests.get(f'{ALPACA_BASE_URL}/account', headers=headers)
+        account_response.raise_for_status()
+        account_data = account_response.json()
+        print("Current account details:", account_data)
+
+        # Update cash balance (paper trading only)
+        patch_response = requests.patch(
+            f'{ALPACA_BASE_URL}/account',
+            headers=headers,
+            json={'cash': starting_balance}
+        )
+        patch_response.raise_for_status()
+        updated_account = patch_response.json()
+        print("Updated account details:", updated_account)
+
+        return updated_account
+
+    except requests.exceptions.RequestException as e:
+        print("Error updating account balance:", e)
+        return None
 
 @app.route("/create-new-simulation", methods=['OPTIONS', 'POST'])
 def new_simulation():
@@ -441,53 +503,93 @@ def new_simulation():
     try:
         data = request.json
         uid = data.get('uid')
-        name = data.get('name')
+        sim_name = data.get('name')
         starting_balance = data.get('startingBalance')
         starting_ticker = data.get('startingTicker')
 
-        if not uid or not name or not starting_balance or not starting_ticker:
+        if not uid or not sim_name or not starting_balance:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        today = datetime.today()
-        date_opened = {
-            'day': today.day,
-            'month': today.month,
-            'year': today.year,
-        }
-
+        # Add the simulation to Firebase
+        now = datetime.now()
+        date_opened = {'day': now.day, 'month': now.month, 'year': now.year}
         simulation = {
-            'name': name,
+            'name': sim_name,
             'dateOpened': date_opened,
             'profitLoss': 0,
             'startingBalance': starting_balance,
             'currentBalance': starting_balance,
             'winRate': 0,
-            'startingTicker': starting_ticker,
+            'startingTicker': starting_ticker
         }
-
         sims_ref = db.collection('users').document(uid).collection('sims')
-        new_sim_ref = sims_ref.document()
-        new_sim_ref.set(simulation)
+        sims_ref.add(simulation)
 
-        return jsonify({'message': 'Simulation created successfully', 'simulation': simulation}), 201
+        # Set up Alpaca account starting balance
+        updated_account = set_starting_balance(starting_balance)
+        if not updated_account:
+            return jsonify({'error': 'Failed to update Alpaca account balance'}), 500
 
+        return jsonify({'message': 'Simulation created successfully', 'simulation': simulation})
     except Exception as e:
         return jsonify({'error': f'Error creating simulation: {str(e)}'}), 500
 
 
-@app.route("/news-sentiment/<stock_symbol>", methods=["GET"])
-def get_news_sentiment(stock_symbol):
+@app.route("/news-sentiment/<company_name>", methods=["GET"])
+def get_news_sentiment(company_name):
+    """
+    Fetch recent news articles about a company and perform sentiment analysis.
+    """
     try:
-        sentiment_result = getSentiment(stock_symbol)
-        if not sentiment_result:
-            return jsonify({"error": "Sentiment data not available"}), 404
+        NEWS_API_KEY = os.getenv("NEWS_API")
+        if not NEWS_API_KEY:
+            return jsonify({"error": "News API key not configured."}), 500
 
-        labels = [item["date"] for item in sentiment_result]  
-        scores = [item["score"] for item in sentiment_result]  
+        url = "https://newsapi.org/v2/everything"
+        params = {
+            "q": company_name,
+            "apiKey": NEWS_API_KEY,
+            "language": "en",
+            "sortBy": "publishedAt",
+        }
+
+        # Make API request
+        response = requests.get(url, params=params)
+        if response.status_code != 200:
+            return jsonify({
+                "error": "Failed to fetch news articles.",
+                "details": response.json()
+            }), response.status_code
+
+        articles = response.json().get("articles", [])
+        if not articles:
+            return jsonify({"error": "No articles found."}), 404
+
+        # Analyze sentiment for each article
+        sentiment_results = []
+        for article in articles:
+            title = article.get("title", "")
+            description = article.get("description", "")
+            content = f"{title}. {description}"
+            sentiment_score = analyzer.polarity_scores(content)
+
+            sentiment_results.append({
+                "date": article.get("publishedAt"),
+                "title": title,
+                "description": description,
+                "sentiment": sentiment_score,
+            })
+
+        # Format data for the chart
+        labels = [item["date"] for item in sentiment_results]
+        scores = [item["sentiment"]["compound"] for item in sentiment_results]
 
         return jsonify({"labels": labels, "scores": scores}), 200
+
     except Exception as e:
-        return jsonify({"error": str(e), "message": "Failed to fetch sentiment data"}), 500
+        return jsonify({"error": str(e), "message": "Failed to fetch sentiment data."}), 500
+   
+
 
 
 

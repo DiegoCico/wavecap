@@ -42,6 +42,11 @@
     color: #ff6464; /* Highlight on hover */
 }
 
+.save-button.saved .fa-heart {
+    color: #ff0000; /* Red color when saved */
+    transition: color 0.3s ease;
+}
+
 /* Stock Details Section */
 .stock-details {
     background-color: #3a3a3a; /* Darker background for detail cards */
@@ -104,7 +109,6 @@ button {
 button:hover {
     background-color: #379683; /* Darker shade of green */
 }
-
 
 /* Metrics Table Styling */
 .metrics-table {
