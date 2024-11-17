@@ -43,6 +43,7 @@ Ticker is a friendly chatbot designed to assist users with:
 - **NewsAPI** and **NewsData.io API** for gathering news articles for sentiment analysis.
 - **VADER Sentiment Analysis** for sentiment scoring.
 - **Alpaca Trading API** for integrating virtual trading features.
+- **TradingView API** for advanced charting in paper view.
 - **SambaNova API** for Ticker's conversational AI capabilities.
 - **Cloudflare API** for generating dynamic text-to-image visualizations.
 
@@ -147,3 +148,6 @@ Ticker is a friendly chatbot designed to assist users with:
 
 ### Cloudflare API
 - **Purpose**: Generate text-to-image visualizations for interactive and creative outputs.
+
+### TradingView API
+- **Purpose**: Advanced charting in paper view.
