@@ -117,7 +117,7 @@ export default function Dashboard({ uid }) {
                                     {sims.map((sim, index) => (
                                         <tr key={index}>
                                             <td>{sim.name}</td>
-                                            <td>{sim.currentBalance}</td>
+                                            <td>{sim.simulatedCash}</td>
                                             <td className="positive">{sim.profitLoss}</td>
                                             <td className="positive">{sim.winRate}</td>
                                             <td>{formatDate(sim.dateOpened)}</td>

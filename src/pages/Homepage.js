@@ -18,31 +18,21 @@ const Homepage = () => {
     const inputRef = useRef(null);
 
     useEffect(() => {
-        // fetchTopGainer();
+        fetchPortfolio();
+        // fetchTopGainer(); // Uncomment this line if the fetchTopGainer function is needed
     }, []);
 
-    const fetchTopGainer = async () => {
+    const fetchPortfolio = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:5000/top-gainer`);
+            const response = await fetch(`http://127.0.0.1:5000/get-portfolio?uid=${uid}`);
             if (response.ok) {
                 const data = await response.json();
-                setTopGainer(data);
+                setUserPortfolio(data.portfolio || []);
             } else {
-                console.error("Failed to fetch top gainer data");
+                console.error("Failed to fetch portfolio");
             }
         } catch (error) {
-            console.error("Error fetching top gainer data:", error);
-        }
-    };
-
-    const handleInputChange = (event) => {
-        const value = event.target.value.toUpperCase();
-        setInputValue(value);
-
-        if (value.trim()) {
-            fetchSuggestions(value);
-        } else {
-            setSuggestions([]);
+            console.error("Error fetching portfolio:", error);
         }
     };
 
@@ -57,6 +47,17 @@ const Homepage = () => {
             }
         } catch (error) {
             console.error("Error fetching stock suggestions:", error);
+        }
+    };
+
+    const handleInputChange = (event) => {
+        const value = event.target.value.toUpperCase();
+        setInputValue(value);
+
+        if (value.trim()) {
+            fetchSuggestions(value);
+        } else {
+            setSuggestions([]);
         }
     };
 
@@ -136,7 +137,16 @@ const Homepage = () => {
                         {userPortfolio.length === 0 ? (
                             <p>Nothing here....yet</p>
                         ) : (
-                            <button className="add-stocks-btn">Add Stocks</button>
+                            userPortfolio.map((stock, index) => (
+                                <div key={index} className="portfolio-item">
+                                    <img
+                                        className="portfolio-stock-image"
+                                        src={`${process.env.PUBLIC_URL}/ticker_icons/${stock.symbol}.png`}
+                                        alt={`${stock.name} logo`}
+                                    />
+                                    <p className="portfolio-stock-name">{stock.name}</p>
+                                </div>
+                            ))
                         )}
                     </div>
                 </div>
@@ -167,18 +177,17 @@ const Homepage = () => {
                     </button>
                 </div>
             </div>
-        <div className="home-main">
-            {showGraph ? (
+            <div className="home-main">
+                {showGraph ? (
                     <Stock stockSymbol={stockSymbol} />
-            ) : showDash ? (
-                <div className="dashboard-container">
-                    <Dashboard uid={uid}/>
-                </div>
-            ) : (
-                <h1 className="home-title">Search for a stock to view its details</h1>
-            )}
-        </div>
-
+                ) : showDash ? (
+                    <div className="dashboard-container">
+                        <Dashboard uid={uid}/>
+                    </div>
+                ) : (
+                    <h1 className="home-title">Search for a stock to view its details</h1>
+                )}
+            </div>
         </div>
     );
 };

@@ -416,28 +416,63 @@ def remove_stock():
         data = request.json
         uid = data.get("uid")
         stock_symbol = data.get("symbol")
-        stock_name = data.get("name")
 
-        if not uid or not stock_symbol or not stock_name:
-            return jsonify({"error": "UID, stock symbol, and name are required"}), 400
+        if not uid or not stock_symbol:
+            return jsonify({"error": "UID and stock symbol are required"}), 400
 
-        user_doc_ref = db.collection("users").document(uid)
-        user_doc_ref.update({
-            "saved": firestore.ArrayRemove([{"symbol": stock_symbol, "name": stock_name}])
-        })
+        # Reference the user's portfolio collection
+        portfolio_ref = db.collection("users").document(uid).collection("portfolio")
+
+        # Query the stock document by its symbol
+        query = portfolio_ref.where("symbol", "==", stock_symbol).limit(1).stream()
+
+        stock_doc = next(query, None)  # Get the first matching document
+        if not stock_doc:
+            return jsonify({"error": f"Stock {stock_symbol} not found in portfolio"}), 404
+
+        # Delete the stock document
+        portfolio_ref.document(stock_doc.id).delete()
 
         return jsonify({"message": f"Stock {stock_symbol} removed successfully"}), 200
 
-    except firestore.NotFound:
-        return jsonify({"error": "User document not found"}), 404
     except Exception as e:
         return jsonify({"error": f"Failed to remove stock: {str(e)}"}), 500
+
+@app.route("/get-portfolio", methods=["GET"])
+def get_portfolio():
+    """
+    Fetch the list of all stock symbols in the user's portfolio.
+    """
+    try:
+        uid = request.args.get("uid")  # Extract UID from query parameters
+
+        if not uid:
+            return jsonify({"error": "UID is required"}), 400
+
+        # Reference the user's portfolio collection
+        portfolio_ref = db.collection("users").document(uid).collection("portfolio")
+
+        # Fetch all documents in the portfolio collection
+        portfolio_docs = portfolio_ref.stream()
+
+        # Extract symbols from each document
+        portfolio_symbols = [doc.to_dict().get("symbol") for doc in portfolio_docs]
+
+        if not portfolio_symbols:
+            return jsonify({"message": "No stocks found in portfolio", "portfolio": []}), 200
+
+        return jsonify({"portfolio": portfolio_symbols}), 200
+
+    except Exception as e:
+        return jsonify({"error": f"Failed to fetch portfolio: {str(e)}"}), 500
+
 
 
 @app.route("/save-stock", methods=["POST"])
 def save_stock():
     """
-    Save a stock to the user's portfolio in Firestore.
+    Save a stock to the user's portfolio in Firestore. 
+    Creates a portfolio collection if it doesn't exist.
     """
     try:
         data = request.json
@@ -448,9 +483,19 @@ def save_stock():
         if not uid or not stock_symbol or not stock_name:
             return jsonify({"error": "UID, stock symbol, and name are required"}), 400
 
-        user_doc_ref = db.collection("users").document(uid)
-        user_doc_ref.update({
-            "saved": firestore.ArrayUnion([{"symbol": stock_symbol, "name": stock_name}])
+        # Reference the user's portfolio collection
+        portfolio_ref = db.collection("users").document(uid).collection("portfolio")
+
+        # Check if the portfolio collection is empty
+        docs = portfolio_ref.limit(1).stream()
+        if not any(docs):
+            # Add a placeholder document to initialize the portfolio collection
+            portfolio_ref.add({"placeholder": True})
+
+        # Save the stock to the portfolio collection
+        portfolio_ref.add({
+            "symbol": stock_symbol,
+            "name": stock_name
         })
 
         return jsonify({"message": f"Stock {stock_symbol} saved successfully"}), 200
@@ -459,6 +504,7 @@ def save_stock():
         return jsonify({"error": "User document not found"}), 404
     except Exception as e:
         return jsonify({"error": f"Failed to save stock: {str(e)}"}), 500
+
 
 def set_starting_balance(starting_balance):
     try:
@@ -490,6 +536,7 @@ def set_starting_balance(starting_balance):
         print("Error updating account balance:", e)
         return None
 
+
 @app.route("/create-new-simulation", methods=['OPTIONS', 'POST'])
 def new_simulation():
     if request.method == 'OPTIONS':
@@ -520,19 +567,28 @@ def new_simulation():
             'startingBalance': starting_balance,
             'currentBalance': starting_balance,
             'winRate': 0,
-            'startingTicker': starting_ticker
+            'startingTicker': starting_ticker,
+            'simulatedCash': starting_balance  # Local simulated balance
         }
         sims_ref = db.collection('users').document(uid).collection('sims')
         sims_ref.add(simulation)
 
-        # Set up Alpaca account starting balance
-        updated_account = set_starting_balance(starting_balance)
-        if not updated_account:
-            return jsonify({'error': 'Failed to update Alpaca account balance'}), 500
+        # Fetch Alpaca account details to ensure integration
+        headers = {
+            'APCA-API-KEY-ID': os.getenv('ALPACA_API_KEY'),
+            'APCA-API-SECRET-KEY': os.getenv('ALPACA_SECRET_KEY')
+        }
+        account_response = requests.get(f'{ALPACA_BASE_URL}/account', headers=headers)
+        if account_response.status_code != 200:
+            return jsonify({'error': 'Failed to fetch Alpaca account'}), 500
 
-        return jsonify({'message': 'Simulation created successfully', 'simulation': simulation})
+        # Respond with simulation creation success
+        return jsonify({'message': 'Simulation created successfully', 'simulation': simulation}), 200
+
     except Exception as e:
         return jsonify({'error': f'Error creating simulation: {str(e)}'}), 500
+
+
 
 
 @app.route("/news-sentiment/<company_name>", methods=["GET"])

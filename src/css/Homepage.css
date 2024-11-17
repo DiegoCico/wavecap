@@ -367,3 +367,24 @@ html, body {
 .gainer-item p:last-child {
     font-weight: bold;
 }
+
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.portfolio-stock-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.portfolio-stock-name {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}

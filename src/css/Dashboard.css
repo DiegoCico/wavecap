@@ -75,13 +75,14 @@
     color: black;
 }
 
+/* Modal Styling */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,12 +91,43 @@
 
 .modal-content {
     background: #232323;
-    padding: 2rem;
+    padding: 20px;
     border-radius: 10px;
-    text-align: center;
-    color: white;
     width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.modal-content input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: #323232;
+    color: white;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-content button:hover {
+    background: #45a049;
+}
+
+.modal-buttons button:last-child {
+    background: #ff0000;
+}
+
+.modal-buttons button:last-child:hover {
+    background: #cc0000;
 }
