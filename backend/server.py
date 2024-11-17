@@ -245,17 +245,25 @@ def autocomplete():
 def top_gainers():
     try:
         # Fetch the top gainers
-        gainers = si.get_day_gainers().head(3)  # Get top 3 gainers
+        gainers = si.get_day_gainers()  # Get the data
+        if gainers.empty:
+            return jsonify({"message": "No gainers available"}), 404
+        print("Fetched gainers:", gainers.head(3))  # Debug: Print the first few rows
 
         # Prepare the data
         top_gainers_list = []
-        for index, row in gainers.iterrows():
+        for index, row in gainers.head(3).iterrows():
             symbol = row['Symbol']
             name = row['Name']
             price = row['Price (Intraday)']
             change = row['% Change']
-            high = row['Day\'s Range'].split(' - ')[1]
-            low = row['Day\'s Range'].split(' - ')[0]
+            day_range = row['Day\'s Range']
+
+            # Validate and split day's range
+            if ' - ' in day_range:
+                low, high = day_range.split(' - ')
+            else:
+                low, high = None, None
 
             top_gainers_list.append({
                 "symbol": symbol,
@@ -268,7 +276,9 @@ def top_gainers():
 
         return jsonify(top_gainers_list)
     except Exception as e:
+        print("Error in /top-gainers:", e)  # Debug: Log the error
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/stock-name/<stock_symbol>", methods=["GET"])
 def get_stock_details(stock_symbol):

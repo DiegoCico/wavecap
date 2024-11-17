@@ -94,21 +94,53 @@ html, body {
     color: white;
 }
 
-.portfolio-body p {
-    overflow-y: scroll; /* Enable vertical scrolling */
-    max-height: 200px; /* Limit height to avoid overflow */
-    -ms-overflow-style: auto; /* Default scrollbar for IE/Edge */
-    scrollbar-width: auto; /* Default scrollbar for Firefox */
+.portfolio-body {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add spacing between items */
+    padding: 10px;
+    max-height: 400px; /* Limit height with scrolling if needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Customize scrollbar width */
+    -ms-overflow-style: none; /* Hide scrollbar in IE */
 }
 
 .portfolio-body::-webkit-scrollbar {
-    display: block; /* Show scrollbar in Chrome/Safari */
-    width: 8px; /* Optional: Adjust scrollbar width */
+    width: 8px; /* Thin scrollbar */
 }
 
 .portfolio-body::-webkit-scrollbar-thumb {
-    background-color: #656565; /* Style the scrollbar thumb */
-    border-radius: 5px; /* Optional: Rounded corners */
+    background-color: #656565; /* Style scrollbar */
+    border-radius: 5px;
+}
+
+/* Portfolio Item */
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #232323; /* Add background color */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-item:hover {
+    background-color: #323232; /* Change background on hover */
+}
+
+.portfolio-stock-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px; /* Add space between image and text */
+    object-fit: contain; /* Ensure image fits within bounds */
+}
+
+.portfolio-stock-name {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    text-align: left;
 }
 
 

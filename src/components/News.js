@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/News.css"; // Assuming the CSS is in the same directory
+import "../css/News.css";
 
 const News = ({ companyName }) => {
     const [newsData, setNewsData] = useState([]);
@@ -11,9 +11,7 @@ const News = ({ companyName }) => {
             setIsLoading(true);
             try {
                 const response = await fetch(`http://127.0.0.1:5000/news/${companyName}`);
-                if (!response.ok) {
-                    throw new Error(`Error fetching news: ${response.statusText}`);
-                }
+                if (!response.ok) throw new Error(`Failed to fetch news: ${response.statusText}`);
                 const data = await response.json();
                 setNewsData(data.news || []);
             } catch (err) {
@@ -28,26 +26,28 @@ const News = ({ companyName }) => {
 
     return (
         <div className="news-container">
-            <h4>Latest News on {companyName}</h4>
+            <h4>News About {companyName}</h4>
             {isLoading ? (
-                <p>Loading news...</p>
+                <div className="status-message">Fetching latest news...</div>
             ) : error ? (
-                <p style={{ color: "red" }}>{error}</p>
-            ) : newsData.length > 0 ? (
+                <div className="status-message error">{error}</div>
+            ) : newsData.length ? (
                 newsData.map((item, index) => (
                     <div key={index} className="news-item">
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="news-title">
                             {item.title}
                         </a>
-                        <p>{item.description || "No description available."}</p>
-                        <small>
-                            Source: <span>{item.source || "Unknown"}</span> | Published:{" "}
-                            <span>{new Date(item.published).toLocaleDateString()}</span>
+                        <p className="news-description">
+                            {item.description || "No description provided."}
+                        </p>
+                        <small className="news-meta">
+                            <span>{item.source || "Unknown source"}</span> •{" "}
+                            {new Date(item.published).toLocaleDateString()}
                         </small>
                     </div>
                 ))
             ) : (
-                <p>No news articles found.</p>
+                <div className="status-message">No news found.</div>
             )}
         </div>
     );

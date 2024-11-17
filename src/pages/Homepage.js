@@ -12,14 +12,16 @@ const Homepage = () => {
     const [showGraph, setShowGraph] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
     const [showDash, setShowDash] = useState(true);
-    const [topGainer, setTopGainer] = useState(null);
+    const [topGainers, setTopGainers] = useState([]); // Support for multiple gainers
     const { uid } = useParams();
     const inputRef = useRef(null);
 
     useEffect(() => {
         fetchPortfolio();
+        fetchTopGainers(); // Fetch top gainers
     }, []);
 
+    // Fetch user's portfolio
     const fetchPortfolio = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:5000/get-portfolio?uid=${uid}`);
@@ -31,6 +33,21 @@ const Homepage = () => {
             }
         } catch (error) {
             console.error("Error fetching portfolio:", error);
+        }
+    };
+
+    // Fetch top gainers
+    const fetchTopGainers = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:5000/top-gainers");
+            if (response.ok) {
+                const data = await response.json();
+                setTopGainers(data); // Set all top gainers
+            } else {
+                console.error("Failed to fetch top gainers");
+            }
+        } catch (error) {
+            console.error("Error fetching top gainers:", error);
         }
     };
 
@@ -164,20 +181,22 @@ const Homepage = () => {
                 </div>
                 <div className="movers-cont">
                     <div className="movers-header">
-                        <p className="movers-title">Top Gainer</p>
+                        <p className="movers-title">Top Gainers</p>
                         <p className="movers-date">As of today</p>
                     </div>
                     <div className="movers-body">
-                        {topGainer ? (
-                            <div className="gainer-item">
-                                <p>
-                                    <strong>{topGainer.symbol}</strong> - {topGainer.name}
-                                </p>
-                                <p>High: {topGainer.high} | Low: {topGainer.low}</p>
-                                <p style={{ color: "green" }}>
-                                    Change: {topGainer.percentChange}%
-                                </p>
-                            </div>
+                        {topGainers.length > 0 ? (
+                            topGainers.map((gainer, index) => (
+                                <div key={index} className="gainer-item">
+                                    <p>
+                                        <strong>{gainer.symbol}</strong> - {gainer.name}
+                                    </p>
+                                    <p>High: {gainer.high} | Low: {gainer.low}</p>
+                                    <p style={{ color: "green" }}>
+                                        Change: {gainer.percentChange}%
+                                    </p>
+                                </div>
+                            ))
                         ) : (
                             <p>Loading...</p>
                         )}
