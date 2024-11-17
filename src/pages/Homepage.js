@@ -47,6 +47,7 @@ const Homepage = () => {
                 <div className="portfolio-cont">
                     <div className="portfolio-header">
                         <p className="portfolio-title">Portfolio</p>
+                        <p className="portfolio-dashboard-btn">Dashboard</p>
                     </div>
                     <div className="portfolio-body">
                         {userPortfolio.length === 0 ? (
@@ -70,7 +71,7 @@ const Homepage = () => {
                 </div>
             </div>
             <div className="home-main">
-                <h1>Main</h1>
+                <h1 className="home-title">Stock</h1>
             </div>
         </div>
     )

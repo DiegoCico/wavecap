@@ -147,12 +147,14 @@ def stock_graph(stock_symbol, interval):
         candle_data = []
         for index, row in hist.iterrows():
             candle_data.append({
-                "x": row.name.strftime('%Y-%m-%d'),  # Date as x-axis value
-                "o": row['Open'],  # Open price
-                "h": row['High'],  # High price
-                "l": row['Low'],   # Low price
-                "c": row['Close'], # Close price
+                "x": row.name.strftime('%Y-%m-%d'),  
+                "o": float(row['Open']),  
+                "h": float(row['High']),  
+                "l": float(row['Low']),   
+                "c": float(row['Close']),
             })
+
+        print(candle_data)
 
         return jsonify({"labels": labels, "data": data, "candleData": candle_data}), 200
 

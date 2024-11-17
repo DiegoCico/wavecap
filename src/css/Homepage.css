@@ -90,6 +90,9 @@
     font-size: 10px;
     /* font-weight: bold; */
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
 .portfolio-body, .movers-body {
@@ -169,4 +172,8 @@
     grid-area: 1 / 3 / 6 / 10;
     background-color: #2B2B2B;
     height: 100vh;
+}
+
+.home-title {
+    color: white;
 }
