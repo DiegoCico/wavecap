@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 app.secret_key = "a2ea490452f07b815f2ee39eaab6d1fc519cc2144d34d312535a27a20109e955"
 
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://diegocico.github.io"]}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
 PREDEFINED_TICKERS = [
