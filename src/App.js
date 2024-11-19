@@ -19,7 +19,7 @@ function App() {
 
       <Routes>
         <Route path="server-test" element={<TestServer />} />
-        <Route path="/" element={<AuthPage />} />
+        <Route path="/wavecap" element={<AuthPage />} />
         <Route path="/home/:uid" element={<Homepage />} />
       </Routes>
     </div>
